@@ -1,17 +1,27 @@
-sheep_queue = input()
-index_to_check_animal = len(sheep_queue) - 1
-sheep_counter = 0
-searching_for_wolf = True
-while searching_for_wolf:
-    if sheep_queue[index_to_check_animal] == 'p':
-        index_to_check_animal -= 7
-        sheep_counter += 1
-        if sheep_queue[index_to_check_animal] == 'f':
-            print(f"Oi! Sheep number {sheep_counter}! You are about to be eaten by a wolf!")
-            searching_for_wolf = False
-    else:
-        print(f"Please go away and stop eating my sheep")
-        searching_for_wolf = False
+sheep = input().split(", ")
+
+wolfs_position = sheep[::-1].index("wolf")
+
+if wolfs_position == 0:
+    print(f"Please go away and stop eating my sheep")
+else:
+    print(f"Oi! Sheep number {wolfs_position}! You are about to be eaten by a wolf!")
+
+
+# sheep_queue = input()
+# index_to_check_animal = len(sheep_queue) - 1
+# sheep_counter = 0
+# searching_for_wolf = True
+# while searching_for_wolf:
+#     if sheep_queue[index_to_check_animal] == 'p':
+#         index_to_check_animal -= 7
+#         sheep_counter += 1
+#         if sheep_queue[index_to_check_animal] == 'f':
+#             print(f"Oi! Sheep number {sheep_counter}! You are about to be eaten by a wolf!")
+#             searching_for_wolf = False
+#     else:
+#         print(f"Please go away and stop eating my sheep")
+#         searching_for_wolf = False
 
 '''
 TASK:

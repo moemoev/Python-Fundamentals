@@ -1,21 +1,33 @@
-string = input()
-inverted_string = ''
+digits = [int(el) for el in input()]
 
-while 0 < len(string):
-    max_value = 0
-    max_value_index = 0
-    for index in range(len(string)):
-        if max_value <= int(string[index]):
-            max_value = int(string[index])
-            max_value_index = index
-    inverted_string += str(max_value)
-    if max_value_index == len(string) - 1:
-        string = string[0:max_value_index:]
-    elif max_value_index == 0:
-        string = string[1::]
-    else:
-        string = string[0:max_value_index] + string[max_value_index + 1:]
-print(f"{inverted_string}")
+result = []
+
+for i in range(len(digits)):
+    m = max(digits)
+    digits.remove(m)
+    result.append(m)
+
+print("".join(str(el) for el in result))
+
+
++# string = input()
+# inverted_string = ''
+#
+# while 0 < len(string):
+#     max_value = 0
+#     max_value_index = 0
+#     for index in range(len(string)):
+#         if max_value <= int(string[index]):
+#             max_value = int(string[index])
+#             max_value_index = index
+#     inverted_string += str(max_value)
+#     if max_value_index == len(string) - 1:
+#         string = string[0:max_value_index:]
+#     elif max_value_index == 0:
+#         string = string[1::]
+#     else:
+#         string = string[0:max_value_index] + string[max_value_index + 1:]
+# print(f"{inverted_string}")
 
 '''
 TASK:
