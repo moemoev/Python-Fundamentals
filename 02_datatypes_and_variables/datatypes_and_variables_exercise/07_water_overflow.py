@@ -1,14 +1,29 @@
-capacity_tank = 255
-number_lines = int(input())
-water_inside_tank = 0
+n = int(input())
+tank = 0
+capacity = 255
 
-for line in range(number_lines):
-    liters_to_add = int(input())
-    if water_inside_tank + liters_to_add <= capacity_tank:
-        water_inside_tank += liters_to_add
-    else:
+for _ in range(n):
+    water = int(input())
+
+    if (tank + water) > capacity:
         print(f"Insufficient capacity!")
-print(water_inside_tank)
+    else:
+        tank += water
+
+print(f"{tank}")
+
+#
+# capacity_tank = 255
+# number_lines = int(input())
+# water_inside_tank = 0
+#
+# for line in range(number_lines):
+#     liters_to_add = int(input())
+#     if water_inside_tank + liters_to_add <= capacity_tank:
+#         water_inside_tank += liters_to_add
+#     else:
+#         print(f"Insufficient capacity!")
+# print(water_inside_tank)
 
 '''
 TASK:

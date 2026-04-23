@@ -1,12 +1,20 @@
-first_number = int(input())
-second_number = int(input())
-third_number = int(input())
-fourth_number = int(input())
+first = int(input())
+second = int(input())
+third = int(input())
+fourth = int(input())
 
-result = first_number + second_number
-result //= third_number
-result *= fourth_number
-print(result)
+print((first + second) // third * fourth)
+
+
+# first_number = int(input())
+# second_number = int(input())
+# third_number = int(input())
+# fourth_number = int(input())
+
+# result = first_number + second_number
+# result //= third_number
+# result *= fourth_number
+# print(result)
 
 '''
 Task:
