@@ -24,7 +24,7 @@
 
 # note:##############################################
 the_int = 0
-the_str = 'faggot'
+the_str = 'hello'
 the_bool = False
 print(f"adress-Int: {id(the_int)}")
 print(f"adress-Str: {id(the_str)}")
