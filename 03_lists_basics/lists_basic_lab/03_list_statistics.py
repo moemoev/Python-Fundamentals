@@ -1,18 +1,39 @@
-number_integers = int(input())
-list_positive_elements = []
-list_negative_elements = []
-sum_negative_integers = 0
+n = int(input())
 
-for integers in range(number_integers):
-    integer = int(input())
-    if 0 <= integer:
-        list_positive_elements.append(integer)
+positive = []
+negative = []
+
+for _ in range(n):
+
+    number = int(input())
+
+    if number < 0:
+        negative.append(number)
     else:
-        list_negative_elements.append(integer)
+        positive.append(number)
 
-print(list_positive_elements)
-print(list_negative_elements)
-print(f"Count of positives: {len(list_positive_elements)}\nSum of negatives: {sum(list_negative_elements)}")
+print(f"{positive}")
+print(f"{negative}")
+print(f"Count of positives: {len(positive)}")
+print(f"Sum of negatives: {sum(negative)}")
+
+
+
+# number_integers = int(input())
+# list_positive_elements = []
+# list_negative_elements = []
+# sum_negative_integers = 0
+#
+# for integers in range(number_integers):
+#     integer = int(input())
+#     if 0 <= integer:
+#         list_positive_elements.append(integer)
+#     else:
+#         list_negative_elements.append(integer)
+#
+# print(list_positive_elements)
+# print(list_negative_elements)
+# print(f"Count of positives: {len(list_positive_elements)}\nSum of negatives: {sum(list_negative_elements)}")
 # judge must have been adjusted, regarding the output format
 
 '''
