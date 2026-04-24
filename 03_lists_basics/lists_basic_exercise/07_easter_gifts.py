@@ -1,26 +1,58 @@
-gifts_to_buy = input().split(" ")
+gifts = [el for el in input().split()]
 
-command = str(input()).split(" ")
-while 'No' not in command and 'Money' not in command:
-    # check if {gift} is in list, while there are any, replace them with 'None' by first finding the index
-    if 'OutOfStock' in command:
-        while command[1] in gifts_to_buy:
-            index = gifts_to_buy.index(command[1])
-            gifts_to_buy[index] = 'None'
-    # check if index is in range, then replace by indexing
-    elif 'Required' in command and int(command[2]) in range(len(gifts_to_buy)):
-        gifts_to_buy[int(command[2])] = command[1]
-    # exchange at the end by eezy pop/append
-    elif 'JustInCase' in command:
-        gifts_to_buy.pop()
-        gifts_to_buy.append(command[1])
-    command.clear()
-    command = str(input()).split(" ")
+cmd = input()
 
-for index in range(len(gifts_to_buy)):
-    if gifts_to_buy[index] == 'None':
-        continue
-    print(f"{gifts_to_buy[index]}", end=" ")
+while cmd != "No Money":
+    cmd = [el for el in cmd.split()]
+    order, gift = cmd[0], cmd[1]
+
+    if order == "OutOfStock":
+
+        for i in range(len(gifts)):
+            if gifts[i] == gift:
+                gifts.pop(i)
+                gifts.insert(i, "None")
+
+    elif order == "Required":
+
+        index = int(cmd[2])
+
+        if 0 <= index < len(gifts):
+            gifts.pop(index)
+            gifts.insert(index, gift)
+
+    elif order == "JustInCase":
+        gifts.pop()
+        gifts.append(gift)
+
+    cmd = input()
+
+print (" ".join(el for el in gifts if el != "None") )
+
+
+# gifts_to_buy = input().split(" ")
+#
+# command = str(input()).split(" ")
+# while 'No' not in command and 'Money' not in command:
+#     # check if {gift} is in list, while there are any, replace them with 'None' by first finding the index
+#     if 'OutOfStock' in command:
+#         while command[1] in gifts_to_buy:
+#             index = gifts_to_buy.index(command[1])
+#             gifts_to_buy[index] = 'None'
+#     # check if index is in range, then replace by indexing
+#     elif 'Required' in command and int(command[2]) in range(len(gifts_to_buy)):
+#         gifts_to_buy[int(command[2])] = command[1]
+#     # exchange at the end by eezy pop/append
+#     elif 'JustInCase' in command:
+#         gifts_to_buy.pop()
+#         gifts_to_buy.append(command[1])
+#     command.clear()
+#     command = str(input()).split(" ")
+#
+# for index in range(len(gifts_to_buy)):
+#     if gifts_to_buy[index] == 'None':
+#         continue
+#     print(f"{gifts_to_buy[index]}", end=" ")
 
 
 

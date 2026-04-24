@@ -1,22 +1,46 @@
-notebook = input()
-
-notebook_list = notebook.split(" ")
-red_cards_team_A = []
-red_cards_team_B = []
+cards = [el.split("-") for el in input().split(" ")]
+team_a = [i for i in range(1,12)]
+team_b = [i for i in range(1,12)]
 game_terminated = False
 
-for element in notebook_list:
-    if 'A' in element and element not in red_cards_team_A:
-        red_cards_team_A.append(element)
-    elif 'B' in element and element not in red_cards_team_B:
-        red_cards_team_B.append(element)
-    if 4 < len(red_cards_team_A) or 4 < len(red_cards_team_B):
+for el in cards:
+    team, player = el[0], int(el[1])
+
+    if team == 'A' and player in team_a:
+        team_a.remove(player)
+    elif team == 'B' and player in team_b:
+        team_b.remove(player)
+
+    if len(team_a) < 7 or len(team_b) < 7:
         game_terminated = True
         break
 
-print(f"Team A - {11 - len(red_cards_team_A)}; Team B - {11 - len(red_cards_team_B)}")
+
+
+print(f"Team A - {len(team_a)}; Team B - {len(team_b)}")
 if game_terminated:
     print(f"Game was terminated")
+
+
+# notebook = input()
+#
+# notebook_list = notebook.split(" ")
+# red_cards_team_A = []
+# red_cards_team_B = []
+# game_terminated = False
+#
+# for element in notebook_list:
+#     if 'A' in element and element not in red_cards_team_A:
+#         red_cards_team_A.append(element)
+#     elif 'B' in element and element not in red_cards_team_B:
+#         red_cards_team_B.append(element)
+#     if 4 < len(red_cards_team_A) or 4 < len(red_cards_team_B):
+#         game_terminated = True
+#         break
+#
+# print(f"Team A - {11 - len(red_cards_team_A)}; Team B - {11 - len(red_cards_team_B)}")
+# if game_terminated:
+#     print(f"Game was terminated")
 
 
 '''

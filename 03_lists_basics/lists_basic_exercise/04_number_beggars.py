@@ -1,11 +1,20 @@
-income = input()
-count_of_beggars = int(input())
-income_list = income.split(",")
+coins = [int(el) for el in input().split(", ")]
+beggars = [0] * (int(input()))
 
-money_each_beggar = [0] * count_of_beggars
-for index in range(len(income_list)):
-    money_each_beggar[index % count_of_beggars] += int(income_list[index])
-print(money_each_beggar)
+for i, coin in enumerate(coins, start=0):
+    beggars[i % len(beggars)] += coin
+
+print(beggars)
+
+
+# income = input()
+# count_of_beggars = int(input())
+# income_list = income.split(",")
+#
+# money_each_beggar = [0] * count_of_beggars
+# for index in range(len(income_list)):
+#     money_each_beggar[index % count_of_beggars] += int(income_list[index])
+# print(money_each_beggar)
 
 
 '''

@@ -1,43 +1,85 @@
-events = input().split("|")
 energy = 100
 coins = 100
-day_handled = True
 
-for element in events:
-    command_and_value = element.split("-")
-    event_command = command_and_value.pop(0)
-    event_value = int(command_and_value.pop())
-    if 'rest' in event_command:
-        energy += event_value
-        if 100 < energy:
-            gained_energy = event_value - (energy - 100)
-            print(f"You gained {gained_energy} energy.")
+tasks = input().split("|")
+
+for task in tasks:
+    event, value = task.split("-")
+    value = int(value)
+
+    if event == "rest":
+        if energy + value <= 100:
+            gained_energy = value
+            energy += value
+        else:
+            gained_energy = 100 - energy
             energy = 100
-        else:
-            print(f"You gained {event_value} energy.")
-        print(f"Current energy: {energy}.")
-    elif 'order' in event_command:
-        if not 30 <= energy:
-            print(f"You had to rest!")
-            energy += 50
-            continue
-        else:
-            print(f"You earned {event_value} coins.")
-            coins += event_value
-            energy -= 30
-    else:
-        coins -= event_value
-        if not 0 <= coins:
-            print(f"Closed! Cannot afford {event_command}.")
-            day_handled = False
-            break
-        else:
-            print(f"You bought {event_command}.")
 
-if day_handled:
+        print(f"You gained {gained_energy} energy.")
+        print(f"Current energy: {energy}.")
+
+    elif event == "order":
+        if 30 <= energy:
+            energy -= 30
+            coins += value
+            print(f"You earned {value} coins.")
+        else:
+            energy += 50
+            print(f"You had to rest!")
+    else:
+        if value <= coins:
+            coins -= value
+            print(f"You bought {event}.")
+        else:
+            print(f"Closed! Cannot afford {event}.")
+            break
+
+else:
     print(f"Day completed!")
     print(f"Coins: {coins}")
     print(f"Energy: {energy}")
+
+
+# events = input().split("|")
+# energy = 100
+# coins = 100
+# day_handled = True
+#
+# for element in events:
+#     command_and_value = element.split("-")
+#     event_command = command_and_value.pop(0)
+#     event_value = int(command_and_value.pop())
+#     if 'rest' in event_command:
+#         energy += event_value
+#         if 100 < energy:
+#             gained_energy = event_value - (energy - 100)
+#             print(f"You gained {gained_energy} energy.")
+#             energy = 100
+#         else:
+#             print(f"You gained {event_value} energy.")
+#         print(f"Current energy: {energy}.")
+#     elif 'order' in event_command:
+#         if not 30 <= energy:
+#             print(f"You had to rest!")
+#             energy += 50
+#             continue
+#         else:
+#             print(f"You earned {event_value} coins.")
+#             coins += event_value
+#             energy -= 30
+#     else:
+#         coins -= event_value
+#         if not 0 <= coins:
+#             print(f"Closed! Cannot afford {event_command}.")
+#             day_handled = False
+#             break
+#         else:
+#             print(f"You bought {event_command}.")
+#
+# if day_handled:
+#     print(f"Day completed!")
+#     print(f"Coins: {coins}")
+#     print(f"Energy: {energy}")
 
 
 

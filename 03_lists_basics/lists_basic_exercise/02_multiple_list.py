@@ -1,10 +1,17 @@
 factor = int(input())
 count = int(input())
-multiples_list = []
 
-for index in range(0, count):
-    multiples_list.append((index+1) * factor)
-print(multiples_list)
+multiples = [factor * i for i in range(1, count +1)]
+
+print(multiples)
+
+# factor = int(input())
+# count = int(input())
+# multiples_list = []
+#
+# for index in range(0, count):
+#     multiples_list.append((index+1) * factor)
+# print(multiples_list)
 
 
 '''

@@ -1,38 +1,79 @@
-items_and_prices = input().split("|")
+deals = [el for el in input().split("|")]
 budget = float(input())
-new_prices = []
-profit = 0.0
-total_money = budget
+profits = []
+profit = 0
 
-for item in range(len(items_and_prices)):
-    # split item and price into a new list
-    item_and_price = items_and_prices[item].split("->")
-    # split further to ease the handling
-    item = item_and_price.pop(0)
-    price = float(item_and_price.pop())
-    # check if money would be enough at all
-    if budget < price:
+def price_is_valid(item: str, price: float)-> bool:
+    if item == "Clothes" and price <= 50.0:
+        return True
+    elif item == "Shoes" and price <= 35.0:
+        return True
+    elif item == "Accessories" and price <= 20.5:
+        return True
+
+    return False
+
+for deal in deals:
+
+    item , price = deal.split("->")
+    price = float(price)
+
+    if not price_is_valid(item, price):
         continue
-    # check if values are in the specified ranges
-    if 'Clothes' in item and float(price) <= 50:
-        pass
-    elif 'Shoes' in item and float(price) <= 35:
-        pass
-    elif 'Accessories' in item and float(price) <= 20.5:
-        pass
-    else:
-        continue
-    budget -= price
-    new_prices.append(price * 1.4)
-    profit += price * 0.4
-total_money += profit
-for index in range(len(new_prices)):
-    print(f"{new_prices[index]:.2f}", end=" ")
-print(f"\nProfit: {profit:.2f}")
-if 150 < total_money:
+
+    if price <= budget:
+        profit += price * 0.4
+        budget -= price
+
+        profits.append(f"{(price * 1.4):.2f}")
+
+print(" ".join(profits))
+print(f"Profit: {profit:.2f}")
+
+budget += sum(float(el) for el in profits)
+
+if 150 <= budget:
     print(f"Hello, France!")
 else:
-    print(f"Not enough money.")  # has been adjusted
+    print(f"Not enough money.")
+
+
+
+# items_and_prices = input().split("|")
+# budget = float(input())
+# new_prices = []
+# profit = 0.0
+# total_money = budget
+#
+# for item in range(len(items_and_prices)):
+#     # split item and price into a new list
+#     item_and_price = items_and_prices[item].split("->")
+#     # split further to ease the handling
+#     item = item_and_price.pop(0)
+#     price = float(item_and_price.pop())
+#     # check if money would be enough at all
+#     if budget < price:
+#         continue
+#     # check if values are in the specified ranges
+#     if 'Clothes' in item and float(price) <= 50:
+#         pass
+#     elif 'Shoes' in item and float(price) <= 35:
+#         pass
+#     elif 'Accessories' in item and float(price) <= 20.5:
+#         pass
+#     else:
+#         continue
+#     budget -= price
+#     new_prices.append(price * 1.4)
+#     profit += price * 0.4
+# total_money += profit
+# for index in range(len(new_prices)):
+#     print(f"{new_prices[index]:.2f}", end=" ")
+# print(f"\nProfit: {profit:.2f}")
+# if 150 < total_money:
+#     print(f"Hello, France!")
+# else:
+#     print(f"Not enough money.")  # has been adjusted
 
 
 '''

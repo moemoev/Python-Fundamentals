@@ -1,20 +1,30 @@
-numbers_as_string = input()
-numbers_to_remove = int(input())
+numbers = [int(el) for el in input().split(" ")]
+count_smallest = int(input())
 
-# convert input str into a list, elements as str
-numbers = numbers_as_string.split()
-# convert list_of_str into list_of_int
-for index in range(len(numbers)):
-    numbers[index] = int(numbers[index])
-
-for _ in range(numbers_to_remove):
-    # min() returns the smallest value, then we use remove cause pop works with index
+for _ in range(count_smallest):
     numbers.remove(min(numbers))
-# convert list_of_int into list_of_str
-for index in range(len(numbers)):
-    numbers[index] = str(numbers[index])
 
-print(", ".join(numbers))
+print(", ".join(str(el) for el in numbers))
+
+
+
+# numbers_as_string = input()
+# numbers_to_remove = int(input())
+#
+# ## convert input str into a list, elements as str
+# numbers = numbers_as_string.split()
+# ## convert list_of_str into list_of_int
+# for index in range(len(numbers)):
+#     numbers[index] = int(numbers[index])
+#
+# for _ in range(numbers_to_remove):
+#     # min() returns the smallest value, then we use remove cause pop works with index
+#     numbers.remove(min(numbers))
+# ## convert list_of_int into list_of_str
+# for index in range(len(numbers)):
+#     numbers[index] = str(numbers[index])
+#
+# print(", ".join(numbers))
 
 
 '''

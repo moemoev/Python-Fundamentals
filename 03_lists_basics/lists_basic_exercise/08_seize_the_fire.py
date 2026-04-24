@@ -1,29 +1,92 @@
-cells_and_value = input().split("#")
+fires = [el for el in input().split("#")]
 water = int(input())
-cells_put_out = []
-total_effort = 0
+effort = 0
 total_fire = 0
+cells = []
 
-for index in range(len(cells_and_value)):
-    fire_and_value = cells_and_value[index].split("=")
-    if water < int(fire_and_value[1]):
+def validate_level(level: str, value: int)-> bool:
+
+    if level == "High":
+        if not is_high(value):
+            return False
+    elif level == "Medium":
+        if not is_medium(value):
+            return False
+    elif level == "Low":
+        if not is_low(value):
+            return False
+
+    return True
+
+def is_high(value:int)-> bool:
+
+    if 81 <= value <= 125:
+        return True
+
+    return False
+
+def is_medium(value:int)-> bool:
+    if 51 <= value <= 80:
+        return True
+
+    return False
+
+def is_low(value:int)-> bool:
+
+    if 1 <= value <= 50:
+        return True
+
+    return False
+
+for fire in fires:
+    fire = [el for el in fire.split(" = ")]
+
+    level, value = fire[0], int(fire[1])
+
+    if not validate_level(level, value) or water < value:
         continue
-    if 'High' in fire_and_value[0] and int(fire_and_value[1]) in range(81, 126):
-        water -= int(fire_and_value[1])
-    elif 'Medium' in fire_and_value[0] and int(fire_and_value[1]) in range(51, 81):
-        water -= int(fire_and_value[1])
-    elif 'Low' in fire_and_value[0] and int(fire_and_value[1]) in range(1, 51):
-        water -= int(fire_and_value[1])
-    else:
-        continue
-    cells_put_out.append(fire_and_value[1])
-    total_effort += 0.25 * int(fire_and_value[1])
-    total_fire += int(fire_and_value[1])
+
+    cells.append(str(value))
+    water -= value
+    total_fire += value
+    effort += value * 0.25
+
 print(f"Cells:")
-for index in range(len(cells_put_out)):
-    print(f" -{cells_put_out[index]}")
-print(f"Effort: {total_effort:.2f}")
+
+for cell in cells:
+    print(f" - {cell}")
+
+print(f"Effort: {effort:.2f}")
 print(f"Total Fire: {total_fire}")
+
+
+
+# cells_and_value = input().split("#")
+# water = int(input())
+# cells_put_out = []
+# total_effort = 0
+# total_fire = 0
+#
+# for index in range(len(cells_and_value)):
+#     fire_and_value = cells_and_value[index].split("=")
+#     if water < int(fire_and_value[1]):
+#         continue
+#     if 'High' in fire_and_value[0] and int(fire_and_value[1]) in range(81, 126):
+#         water -= int(fire_and_value[1])
+#     elif 'Medium' in fire_and_value[0] and int(fire_and_value[1]) in range(51, 81):
+#         water -= int(fire_and_value[1])
+#     elif 'Low' in fire_and_value[0] and int(fire_and_value[1]) in range(1, 51):
+#         water -= int(fire_and_value[1])
+#     else:
+#         continue
+#     cells_put_out.append(fire_and_value[1])
+#     total_effort += 0.25 * int(fire_and_value[1])
+#     total_fire += int(fire_and_value[1])
+# print(f"Cells:")
+# for index in range(len(cells_put_out)):
+#     print(f" -{cells_put_out[index]}")
+# print(f"Effort: {total_effort:.2f}")
+# print(f"Total Fire: {total_fire}")
 
 
 

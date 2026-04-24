@@ -1,19 +1,40 @@
-string = input()
-number_shuffles = int(input())
-shuffled_cards = (string.split(" "))
-first_split_deck = []
-second_split_deck = []
-max_index = len(shuffled_cards)
+cards = [el for el in input().split(" ")]
+count_shuffles = int(input())
 
-for _ in range(number_shuffles):
-    for _ in range(max_index // 2):
-        first_split_deck.append(shuffled_cards.pop(0))
-    for _ in range(max_index // 2):
-        second_split_deck.append(shuffled_cards.pop(0))
-    while first_split_deck and second_split_deck:
-        shuffled_cards.append(first_split_deck.pop(0))
-        shuffled_cards.append(second_split_deck.pop(0))
-print(shuffled_cards)
+def shuffle_cards(c: list)-> list:
+    c_shuffled = []
+    mid = len(c) // 2
+    left , right = c[:mid], c[mid:]
+
+    for i in range(mid):
+        c_shuffled.append(left[i])
+        c_shuffled.append(right[i])
+
+    return c_shuffled
+
+for _ in range(count_shuffles):
+    cards = shuffle_cards(cards)
+
+
+print(cards)
+
+
+# string = input()
+# number_shuffles = int(input())
+# shuffled_cards = (string.split(" "))
+# first_split_deck = []
+# second_split_deck = []
+# max_index = len(shuffled_cards)
+#
+# for _ in range(number_shuffles):
+#     for _ in range(max_index // 2):
+#         first_split_deck.append(shuffled_cards.pop(0))
+#     for _ in range(max_index // 2):
+#         second_split_deck.append(shuffled_cards.pop(0))
+#     while first_split_deck and second_split_deck:
+#         shuffled_cards.append(first_split_deck.pop(0))
+#         shuffled_cards.append(second_split_deck.pop(0))
+# print(shuffled_cards)
 
 # both work, upper was my first trial before watching the exercise video
 # lower showcases the slicing of strings which is nais
