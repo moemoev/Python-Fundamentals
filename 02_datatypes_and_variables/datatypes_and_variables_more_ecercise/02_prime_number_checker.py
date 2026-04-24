@@ -1,11 +1,23 @@
-number_to_check = int(input())
-is_prime = True
+number = int(input())
 
-for number in range(3, number_to_check):
-    if number_to_check % number == 0:
-        is_prime = False
+for i in range(number -1, number//2 -1, -1):
+
+    if number % i == 0:
+        print(f"False")
         break
-print(is_prime)
+
+else:
+    print(f"True")
+
+#
+# number_to_check = int(input())
+# is_prime = True
+#
+# for number in range(3, number_to_check):
+#     if number_to_check % number == 0:
+#         is_prime = False
+#         break
+# print(is_prime)
 
 '''
 TASK:

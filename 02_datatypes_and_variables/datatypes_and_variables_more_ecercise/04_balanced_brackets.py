@@ -1,30 +1,50 @@
-number_symbols = int(input())
-left_bracket_exists = False
-right_bracket_exists = False
-balanced = True
-for number in range(number_symbols):
-    symbol = input()
-    if symbol == '(':
-        if left_bracket_exists:
-            print("UNBALANCED")
-            balanced = False
-            break
-        else:
-            left_bracket_exists = True
-    elif symbol == ')':
-        if right_bracket_exists or not left_bracket_exists:
-            print("UNBALANCED")
-            balanced = False
-            break
-        else:
-            right_bracket_exists = True
-    if left_bracket_exists and right_bracket_exists:
-        left_bracket_exists = False
-        right_bracket_exists = False
-        balanced = True
+n = int(input())
+is_open = False
 
-if balanced:
-    print("BALANCED")
+for _ in range(n):
+
+    symbol = input()
+
+    if (symbol == "(" and is_open) or(symbol == ")" and not is_open):
+        print(f"UNBALANCED")
+        break
+
+    if symbol == "(":
+        is_open = True
+    elif symbol == ")":
+        is_open = False
+
+else:
+    print(f"BALANCED")
+
+
+# number_symbols = int(input())
+# left_bracket_exists = False
+# right_bracket_exists = False
+# balanced = True
+# for number in range(number_symbols):
+#     symbol = input()
+#     if symbol == '(':
+#         if left_bracket_exists:
+#             print("UNBALANCED")
+#             balanced = False
+#             break
+#         else:
+#             left_bracket_exists = True
+#     elif symbol == ')':
+#         if right_bracket_exists or not left_bracket_exists:
+#             print("UNBALANCED")
+#             balanced = False
+#             break
+#         else:
+#             right_bracket_exists = True
+#     if left_bracket_exists and right_bracket_exists:
+#         left_bracket_exists = False
+#         right_bracket_exists = False
+#         balanced = True
+#
+# if balanced:
+#     print("BALANCED")
 
 '''
 TASK:

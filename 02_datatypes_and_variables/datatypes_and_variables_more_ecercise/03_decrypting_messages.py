@@ -1,12 +1,22 @@
-letter_shift = int(input())
-number_letters = int(input())
-decrypted_message = ''
+chiffre = int(input())
+n = int(input())
 
-for i in range(number_letters):
-    encrypted_letter = input()
-    decrypted_message += chr(ord(encrypted_letter) + letter_shift)
-print(decrypted_message)
+message = ""
 
+for _ in range(n):
+    message += chr(ord(input()) + chiffre)
+
+print(message)
+
+# letter_shift = int(input())
+# number_letters = int(input())
+# decrypted_message = ''
+#
+# for i in range(number_letters):
+#     encrypted_letter = input()
+#     decrypted_message += chr(ord(encrypted_letter) + letter_shift)
+# print(decrypted_message)
+#
 
 '''
 TASK:
