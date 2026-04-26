@@ -1,23 +1,42 @@
-circle_of_soldiers = input().split()
-killing_index = int(input())
-order_of_execution = []
-# str into int
-for i in range(len(circle_of_soldiers)):
-    circle_of_soldiers[i] = int(circle_of_soldiers[i])
-index = killing_index - 1
+people = input().split()
+k = int(input())
 
-while circle_of_soldiers:
-    index %= len(circle_of_soldiers)
-    if len(circle_of_soldiers) == 1:
-        order_of_execution.append(circle_of_soldiers.pop())
-    else:
-        order_of_execution.append(circle_of_soldiers.pop(index))
-    index += killing_index - 1  # adjusting the index to fit the shift in index
-# int into str again, join does not work with ints
-for i in range(len(order_of_execution)):
-    order_of_execution[i] = str(order_of_execution[i])
+kill_order = []
+index = 0
 
-print("[" + ",".join(order_of_execution) + "]")
+while people:
+    index += k - 1
+
+    if len(people) - 1 < index:
+        index = index % len(people)
+
+    kill_order.append(people.pop(index))
+
+
+
+print(f'[{",".join(kill_order)}]')
+
+
+# circle_of_soldiers = input().split()
+# killing_index = int(input())
+# order_of_execution = []
+# # str into int
+# for i in range(len(circle_of_soldiers)):
+#     circle_of_soldiers[i] = int(circle_of_soldiers[i])
+# index = killing_index - 1
+#
+# while circle_of_soldiers:
+#     index %= len(circle_of_soldiers)
+#     if len(circle_of_soldiers) == 1:
+#         order_of_execution.append(circle_of_soldiers.pop())
+#     else:
+#         order_of_execution.append(circle_of_soldiers.pop(index))
+#     index += killing_index - 1  # adjusting the index to fit the shift in index
+# # int into str again, join does not work with ints
+# for i in range(len(order_of_execution)):
+#     order_of_execution[i] = str(order_of_execution[i])
+#
+# print("[" + ",".join(order_of_execution) + "]")
 
 
 '''

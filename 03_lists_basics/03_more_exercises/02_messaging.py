@@ -1,14 +1,31 @@
-indexes = input().split()
-letters_list = list(input())
-message = []
+numbers = input().split()
+sentence = [el for el in input()]
 
-for element in indexes:
-    sum_digits = 0
-    for letter in element:
-        sum_digits += int(letter)
-    sum_digits %= len(letters_list)
-    message.append(letters_list.pop(sum_digits))
-print("".join(message))
+message = ''
+
+for el in numbers:
+    i = 0
+
+    for digit in el:
+       i += int(digit)
+
+    i = i % len(sentence)
+
+    message += sentence.pop(i)
+
+print(message)
+
+# indexes = input().split()
+# letters_list = list(input())
+# message = []
+#
+# for element in indexes:
+#     sum_digits = 0
+#     for letter in element:
+#         sum_digits += int(letter)
+#     sum_digits %= len(letters_list)
+#     message.append(letters_list.pop(sum_digits))
+# print("".join(message))
 
 
 '''

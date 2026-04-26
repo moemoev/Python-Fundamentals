@@ -1,86 +1,198 @@
-import sys
-
 numbers = [int(el) for el in input().split()]
+cmd = input()
+
+def index_valid(index : int, range: int):
+    if 0 <= index < range:
+        return True
+
+    return False
 
 
-# command = input().split()
+def get_odd_elements(ll: list)-> list:
+    result = []
 
+    for el in ll:
+        if el % 2 == 1:
+            result.append(el)
 
-def exchange(index):
-    if not 0 < index < len(numbers):
-        print("invalid index")
-        return
-    front_slice = numbers[:index + 1:]
-    for _ in range(index + 1):
-        numbers.pop(0)
-    numbers.extend(front_slice)
-
-
-def max_even(nums):
-    max_val = - sys.maxsize
-    index = 0
-    for i in range(len(nums)):
-        if nums[i] % 2 == 0 and max_val <= nums[i]:
-            max_val = nums[i]
-            index = i
-    return index
-
-
-def max_odd(nums):
-    max_val = - sys.maxsize
-    index = 0
-    for i in range(len(nums)):
-        if not nums[i] % 2 == 0 and max_val <= nums[i]:
-            max_val = nums[i]
-            index = i
-    return index
-
-
-def min_even(nums):
-    min_val = sys.maxsize
-    index = 0
-    for i in range(len(nums)):
-        if nums[i] % 2 == 0 and min_val >= nums[i]:
-            min_val = nums[i]
-            index = i
-    return index
-
-
-def min_odd(nums):
-    min_val = sys.maxsize
-    index = 0
-    for i in range(len(nums)):
-        if not nums[i] % 2 == 0 and min_val >= nums[i]:
-            min_val = nums[i]
-            index = i
-    return index
-
-
-def even_numbers(nums):
-    result = [el for el in nums if el % 2 == 0]
     return result
 
 
-def odd_numbers(nums):
-    result = [el for el in nums if not el % 2 == 0]
+def get_even_elements(ll: list) -> list:
+    result = []
+
+    for el in ll:
+        if el % 2 == 0:
+            result.append(el)
+
     return result
 
 
-def first(nums, index):
-    result = nums[:index + 1:]
-    return result
+while cmd != "end":
+    parts = cmd.split(" ")
+
+    if parts[0] == "exchange":
+        i = int(parts[1])
+
+        if not index_valid(i, len(numbers)):
+            print(f"Invalid index")
+            cmd = input()
+            continue
+
+        numbers = numbers[i + 1:] + numbers[0:i + 1]
+
+    elif parts[0] == "max":
+
+        if parts[1] == "even":
+            if len(get_even_elements(numbers)) == 0:
+                print(f"No matches")
+                cmd = input()
+                continue
+
+            print(f"{len(numbers) - 1 - numbers[::-1].index(max(get_even_elements(numbers)))}")
 
 
-def last(nums, index):
-    result = nums[len(nums) - index::]
-    return result
+        elif parts[1] == "odd":
+            if len(get_odd_elements(numbers)) == 0:
+                print(f"No matches")
+                cmd = input()
+                continue
+
+            print(f"{len(numbers) - 1 - numbers[::-1].index(max(get_odd_elements(numbers)))}")
+
+    elif parts[0] == "min":
+
+        if parts[1] == "even":
+            if len(get_even_elements(numbers)) == 0:
+                print(f"No matches")
+                cmd = input()
+                continue
+
+            print(f"{len(numbers) - 1 - numbers[::-1].index(min(get_even_elements(numbers)))}")
 
 
-print(max_odd(numbers))
-# print(last(odd_numbers(numbers), 2))
-# print(numbers)
+        elif parts[1] == "odd":
+            if len(get_odd_elements(numbers)) == 0:
+                print(f"No matches")
+                cmd = input()
+                continue
 
 
+            print(f"{len(numbers) - 1 - numbers[::-1].index(min(get_odd_elements(numbers)))}")
+
+    elif parts[0] == "first":
+        count = int(parts[1])
+
+        if len(numbers) < count:
+            print("Invalid count")
+            cmd = input()
+            continue
+
+        if parts[2] == "even":
+            print(get_even_elements(numbers)[0:count])
+        else:
+            print(get_odd_elements(numbers)[0:count])
+    elif parts[0] == "last":
+        count = int(parts[1])
+
+        if len(numbers) < count:
+            print("Invalid count")
+            cmd = input()
+            continue
+
+        if parts[2] == "even":
+            print(get_even_elements(numbers)[-count:])
+        else:
+            print(get_odd_elements(numbers)[-count:])
+
+    cmd = input()
+
+print(numbers)
+
+
+# import sys
+#
+# numbers = [int(el) for el in input().split()]
+#
+#
+# # command = input().split()
+#
+#
+# def exchange(index):
+#     if not 0 < index < len(numbers):
+#         print("invalid index")
+#         return
+#     front_slice = numbers[:index + 1:]
+#     for _ in range(index + 1):
+#         numbers.pop(0)
+#     numbers.extend(front_slice)
+#
+#
+# def max_even(nums):
+#     max_val = - sys.maxsize
+#     index = 0
+#     for i in range(len(nums)):
+#         if nums[i] % 2 == 0 and max_val <= nums[i]:
+#             max_val = nums[i]
+#             index = i
+#     return index
+#
+#
+# def max_odd(nums):
+#     max_val = - sys.maxsize
+#     index = 0
+#     for i in range(len(nums)):
+#         if not nums[i] % 2 == 0 and max_val <= nums[i]:
+#             max_val = nums[i]
+#             index = i
+#     return index
+#
+#
+# def min_even(nums):
+#     min_val = sys.maxsize
+#     index = 0
+#     for i in range(len(nums)):
+#         if nums[i] % 2 == 0 and min_val >= nums[i]:
+#             min_val = nums[i]
+#             index = i
+#     return index
+#
+#
+# def min_odd(nums):
+#     min_val = sys.maxsize
+#     index = 0
+#     for i in range(len(nums)):
+#         if not nums[i] % 2 == 0 and min_val >= nums[i]:
+#             min_val = nums[i]
+#             index = i
+#     return index
+#
+#
+# def even_numbers(nums):
+#     result = [el for el in nums if el % 2 == 0]
+#     return result
+#
+#
+# def odd_numbers(nums):
+#     result = [el for el in nums if not el % 2 == 0]
+#     return result
+#
+#
+# def first(nums, index):
+#     result = nums[:index + 1:]
+#     return result
+#
+#
+# def last(nums, index):
+#     result = nums[len(nums) - index::]
+#     return result
+#
+#
+# print(max_odd(numbers))
+# # print(last(odd_numbers(numbers), 2))
+# # print(numbers)
+#
+#
 '''
 TASK:
 Trifon has finally become a junior developer and has received his first task. It is about manipulating a list of integers.

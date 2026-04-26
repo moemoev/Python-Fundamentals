@@ -1,20 +1,48 @@
-times_as_str = input().split()
-index_finishline = len(times_as_str) // 2
-time_left_racer = 0.0
-time_right_racer = 0.0
+times = [int(el) for el in input().split()]
 
-for i in range(index_finishline):
-    if int(times_as_str[i]) == 0:
-        time_left_racer *= 0.8
-    time_left_racer += int(times_as_str[i])
-for i in range(len(times_as_str) - 1, index_finishline, -1):
-    if int(times_as_str[i]) == 0:
-        time_right_racer *= 0.8
-    time_right_racer += int(times_as_str[i])
-if time_left_racer < time_right_racer:
-    print(f"The winner is left with total time: {time_left_racer:.1f}")
-else:
-    print(f"The winner is right with total time: {time_right_racer:.1f}")
+mid = len(times) // 2
+
+left_racer = times[:mid]
+right_racer = times[mid + 1:]
+
+left_racetime = 0
+right_racetime = 0
+
+for left, right in zip(left_racer, right_racer[::-1]):
+
+    left_racetime += left
+    right_racetime += right
+
+    if left == 0:
+        left_racetime *= 0.8
+
+    if right == 0:
+        right_racetime *= 0.8
+
+winner = 'left' if left_racetime < right_racetime else 'right'
+
+
+
+print(f"The winner is {winner} with total time: {min(left_racetime, right_racetime):.1f}")
+
+
+# times_as_str = input().split()
+# index_finishline = len(times_as_str) // 2
+# time_left_racer = 0.0
+# time_right_racer = 0.0
+#
+# for i in range(index_finishline):
+#     if int(times_as_str[i]) == 0:
+#         time_left_racer *= 0.8
+#     time_left_racer += int(times_as_str[i])
+# for i in range(len(times_as_str) - 1, index_finishline, -1):
+#     if int(times_as_str[i]) == 0:
+#         time_right_racer *= 0.8
+#     time_right_racer += int(times_as_str[i])
+# if time_left_racer < time_right_racer:
+#     print(f"The winner is left with total time: {time_left_racer:.1f}")
+# else:
+#     print(f"The winner is right with total time: {time_right_racer:.1f}")
 
 
 '''
