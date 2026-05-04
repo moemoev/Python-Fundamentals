@@ -1,11 +1,24 @@
-def characters_in_between(char_1, char_2):
-    output_string = ''
-    for order in range(ord(char_1) + 1, ord(char_2)):
-        output_string += chr(order) + " "
-    return output_string.strip()
+def get_char_sequence(first_char: str, last_char: str)-> str:
+    result = ''
+
+    for order in range(ord(first_char) + 1, ord(last_char)):
+        result += chr(order)
+
+    return " ".join(result)
+
+first = input()
+second = input()
+
+print(get_char_sequence(first, second))
+
+# def characters_in_between(char_1, char_2):
+#     output_string = ''
+#     for order in range(ord(char_1) + 1, ord(char_2)):
+#         output_string += chr(order) + " "
+#     return output_string.strip()
 
 
-print(characters_in_between(input(), input()))
+# print(characters_in_between(input(), input()))
 
 
 '''

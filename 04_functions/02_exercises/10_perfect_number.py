@@ -1,19 +1,35 @@
-def print_is_perfectnumber(number):
-    if aliquot_sum(number):
-        print(f"We have a perfect number!")
-    else:
-        print(f"It's not so perfect.")
+def is_perfect_number(n: int)-> bool:
+    aliquot_sum = 0
+
+    for i in range(1, n // 2 + 1):
+        if n % i == 0:
+            aliquot_sum += i
+
+    return aliquot_sum == n
+
+number = int(input())
+
+if is_perfect_number(number):
+    print("We have a perfect number!")
+else:
+    print("It's not so perfect.")
+
+# def print_is_perfectnumber(number):
+#     if aliquot_sum(number):
+#         print(f"We have a perfect number!")
+#     else:
+#         print(f"It's not so perfect.")
 
 
-def aliquot_sum(number):
-    candidates = [num for num in range(1, number // 2 + 1) if number % num == 0]
-    if sum(candidates) == number:
-        return True
-    else:
-        return False
+# def aliquot_sum(number):
+#     candidates = [num for num in range(1, number // 2 + 1) if number % num == 0]
+#     if sum(candidates) == number:
+#         return True
+#     else:
+#         return False
 
 
-print_is_perfectnumber(int(input()))
+# print_is_perfectnumber(int(input()))
 
 
 '''

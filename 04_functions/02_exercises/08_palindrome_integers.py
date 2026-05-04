@@ -1,17 +1,32 @@
-def check_content_is_palindrome(list_of_integers):
-    list_of_integers = [list(element) for element in list_of_integers]
-    list_of_booleans = []
-    for element in list_of_integers:
-        if element[::-1] == element:
-            list_of_booleans.append(True)
-        else:
-            list_of_booleans.append(False)
-    return list_of_booleans
+def is_palindrome(sequence: list[str])-> None:
+
+    # for el in sequence:
+    #     if el == el[::-1]:
+    #         print(f"True")
+    #     else:
+    #         print(f"False")
+
+    for el in sequence:
+        print(el == el[::-1])
+
+numbers = input().split(", ")
+
+is_palindrome(numbers)
+
+# def check_content_is_palindrome(list_of_integers):
+#     list_of_integers = [list(element) for element in list_of_integers]
+#     list_of_booleans = []
+#     for element in list_of_integers:
+#         if element[::-1] == element:
+#             list_of_booleans.append(True)
+#         else:
+#             list_of_booleans.append(False)
+#     return list_of_booleans
 
 
-result = check_content_is_palindrome(input().split(", "))
-for element in result:
-    print(element)
+# result = check_content_is_palindrome(input().split(", "))
+# for element in result:
+#     print(element)
 
 
 '''

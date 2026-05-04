@@ -1,3 +1,14 @@
+def return_min(num_1: int, num_2: int, num_3: int)->int:
+    return min(num_1, num_2, num_3)
+
+first = int(input())
+second = int(input())
+third = int(input())
+
+
+print(return_min(first, second, third))
+
+
 # import sys
 #
 #
@@ -10,13 +21,16 @@
 #     if num_3 < min_num:
 #         min_num = num_3
 #     return min_num
-def smallest_number(num_1, num_2, num_3):
-    numbers_as_list = [num_1, num_2, num_3]
-    numbers_as_list.sort(reverse=True)
-    return numbers_as_list.pop()
 
 
-print(smallest_number(int(input()), int(input()), int(input())))
+# #####
+# def smallest_number(num_1, num_2, num_3):
+#     numbers_as_list = [num_1, num_2, num_3]
+#     numbers_as_list.sort(reverse=True)
+#     return numbers_as_list.pop()
+
+
+# print(smallest_number(int(input()), int(input()), int(input())))
 
 
 '''

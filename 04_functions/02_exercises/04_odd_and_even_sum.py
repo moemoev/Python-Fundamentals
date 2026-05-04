@@ -1,21 +1,41 @@
-def odd_even_sum(number):
-    number_list = []
-    while number:
-        number_list.append(number % 10)
-        number //= 10
-    number_list.reverse()
-    even_sum = 0
-    odd_sum = 0
-    for element in number_list:
-        if element % 2 == 0:
-            even_sum += element
+def get_digit_sums(digit: str)-> tuple[int, int]:
+    odd = 0
+    even = 0
+
+    for el in digit:
+        num = int(el)
+
+        if num % 2 == 0:
+            even += num
         else:
-            odd_sum += element
-    return [even_sum, odd_sum]
+            odd += num
+
+    return even, odd
+
+number = input()
+
+even_sum, odd_sum = get_digit_sums(number)
+
+print(f"Odd sum = {odd_sum}, Even sum = {even_sum}")
+
+# def odd_even_sum(number):
+#     number_list = []
+#     while number:
+#         number_list.append(number % 10)
+#         number //= 10
+#     number_list.reverse()
+#     even_sum = 0
+#     odd_sum = 0
+#     for element in number_list:
+#         if element % 2 == 0:
+#             even_sum += element
+#         else:
+#             odd_sum += element
+#     return [even_sum, odd_sum]
 
 
-result = odd_even_sum(int(input()))
-print(f"Odd sum = {result[1]}, Even sum = {result[0]}")
+# result = odd_even_sum(int(input()))
+# print(f"Odd sum = {result[1]}, Even sum = {result[0]}")
 
 
 '''
