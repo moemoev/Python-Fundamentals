@@ -1,14 +1,29 @@
-def loading_bar(loading_progress):
-    count_loading_symbols = loading_progress // 10
-    if loading_progress < 100:
-        print(f"{loading_progress}% [" + count_loading_symbols * "%" + (10 - count_loading_symbols) * "." + "]")
-        print(f"Still loading...")
-    else:
-        print(f"100% Complete!")
-        print(f"[" + 10 * "%" + "]")
+def loading_bar(progress: int)-> str:
+
+    count_symb = progress // 10
+
+    return f"[{count_symb * '%'}{(10-count_symb) * '.'}]"
+
+number = int(input())
+
+if number == 100:
+    print(f"100% Complete!")
+    print(loading_bar(number))
+else:
+    print(f"{number}% {loading_bar(number)}")
+    print(f"Still loading...")
+
+# def loading_bar(loading_progress):
+#     count_loading_symbols = loading_progress // 10
+#     if loading_progress < 100:
+#         print(f"{loading_progress}% [" + count_loading_symbols * "%" + (10 - count_loading_symbols) * "." + "]")
+#         print(f"Still loading...")
+#     else:
+#         print(f"100% Complete!")
+#         print(f"[" + 10 * "%" + "]")
 
 
-loading_bar(int(input()))
+# loading_bar(int(input()))
 
 
 '''
