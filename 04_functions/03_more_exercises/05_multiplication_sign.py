@@ -1,28 +1,57 @@
-num_1 = int(input())
-num_2 = int(input())
-num_3 = int(input())
+def contains_zero(n: list)-> bool:
+    for el in n:
+        if el == 0:
+            return True
 
-
-def nums_zero(number1: int, number2: int, number3: int):
-    if number1 == 0 or number2 == 0 or number3 == 0:
-        return True
     return False
 
+def count_negatives(n: list)->int:
+    quantity_neg_signs = 0
 
-def nums_positive(number1: int, number2: int, number3: int):
-    nums = [number1, number2, number3]
-    negatives = [el for el in nums if el < 0]
-    if len(negatives) % 2 == 0:
-        return True
-    return False
+    for el in n:
+        if el < 0:
+            quantity_neg_signs += 1
+
+    return quantity_neg_signs
 
 
-if nums_zero(num_1, num_2, num_3):
-    print(f"zero")
-elif nums_positive(num_1, num_2, num_3):
-    print(f"positive")
+numbers = []
+
+for _ in range(3):
+    numbers.append(int(input()))
+
+if contains_zero(numbers):
+    print("zero")
+elif count_negatives(numbers) % 2 == 0:
+    print("positive")
 else:
-    print(f"negative")
+    print("negative")
+
+# num_1 = int(input())
+# num_2 = int(input())
+# num_3 = int(input())
+
+
+# def nums_zero(number1: int, number2: int, number3: int):
+#     if number1 == 0 or number2 == 0 or number3 == 0:
+#         return True
+#     return False
+
+
+# def nums_positive(number1: int, number2: int, number3: int):
+#     nums = [number1, number2, number3]
+#     negatives = [el for el in nums if el < 0]
+#     if len(negatives) % 2 == 0:
+#         return True
+#     return False
+
+
+# if nums_zero(num_1, num_2, num_3):
+#     print(f"zero")
+# elif nums_positive(num_1, num_2, num_3):
+#     print(f"positive")
+# else:
+#     print(f"negative")
 
 
 '''

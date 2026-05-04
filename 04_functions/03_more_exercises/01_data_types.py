@@ -1,18 +1,40 @@
-def check_datatype(datatype, value):
-    if datatype == 'int':
-        value = int(value) * 2
-    elif datatype == 'real':
-        value = float(value) * 1.5
-    elif datatype == 'string':
-        value = "$" + value + "$"
-    return value
+def data_types(type: str, val):
+    if type == "string":
+        return string_type(val)
+
+    return numercial_type(type, val)
+
+def numercial_type(type: str, val):
+    if type == "int":
+        return f"{int(val) * 2}"
+
+    else:
+        return f"{(float(val) * 1.5):.2f}"
+
+def string_type(val: str):
+    return f"${val}$"
 
 
-result = check_datatype(input(), input())
-if type(result) == float:
-    print(f"{result:.2f}")
-else:
-    print(result)
+data_type = input()
+value = input()
+
+print(data_types(data_type, value))
+
+# def check_datatype(datatype, value):
+#     if datatype == 'int':
+#         value = int(value) * 2
+#     elif datatype == 'real':
+#         value = float(value) * 1.5
+#     elif datatype == 'string':
+#         value = "$" + value + "$"
+#     return value
+
+
+# result = check_datatype(input(), input())
+# if type(result) == float:
+#     print(f"{result:.2f}")
+# else:
+#     print(result)
 
 
 '''
