@@ -1,13 +1,17 @@
-names = input().split(" ")
+names = [el for el in input().split(", ")]
 
-# note using list.method .sort()
-names.sort()
-names.sort(reverse=True, key=lambda x: len(x))
+print(sorted(names, key=lambda x: (-len(x), x)))
 
-# note using a really crazy approach with builtin func sorted() and labda x: return 2 values, neg integer and string
-# sorted_names = sorted(names, key=lambda x: (-len(x), x))
+# names = input().split(" ")
 
-print(names)
+# # note using list.method .sort()
+# names.sort()
+# names.sort(reverse=True, key=lambda x: len(x))
+
+# # note using a really crazy approach with builtin func sorted() and labda x: return 2 values, neg integer and string
+# # sorted_names = sorted(names, key=lambda x: (-len(x), x))
+
+# print(names)
 
 
 '''

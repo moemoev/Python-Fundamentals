@@ -4,7 +4,7 @@ palindrome = input()
 # note: realization with reversed() function, which returns an iterator, and a one line comprehension list
 # palindromes = [element for element in list_of_words if element == "".join((reversed(element)))]
 
-# note: try to solve it vie .reverse() which is the shittest way ever
+# note: try to solve it via .reverse() which is the "worst" way ever
 # palindromes = []
 # for element in list_of_words:
 #     palindromes = [el for el in element]
@@ -13,7 +13,7 @@ palindrome = input()
 #         print("cock")
 
 # note using the list comprehensien[::-1] to reverse the list, which is way awesomer
-#  the creation of list_of_lists could have been done at the top, while reading th einput, just exchange l_o_w with input.split
+#  the creation of list_of_lists could have been done at the top, while reading the input, just exchange l_o_w with input.split
 list_of_lists = [list(element) for element in list_of_words]
 palindromes = ["".join(element) for element in list_of_lists if element == element[::-1]]
 

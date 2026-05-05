@@ -1,20 +1,34 @@
-notes = input().split("-")
-to_do_list = [0] * 10
+cmd = input()
+
+notes = []
+
+while not cmd == "End":
+    notes.append(cmd)
+
+    cmd = input()
 
 
-def notes_separation(list):
-    value_1 = int(list[0])
-    value_2 = list[1]
-    return value_1, value_2
+to_do = [note.split("-")[1] for note in sorted(notes, key=lambda x: int(x.split("-")[0]))]
+
+print(to_do)
+
+# notes = input().split("-")
+# to_do_list = [0] * 10
 
 
-while 'End' not in notes:
-    importance, note = notes_separation(notes)
-    to_do_list.pop(importance)
-    to_do_list.insert(importance, note)
-    notes = input().split("-")
+# def notes_separation(list):
+#     value_1 = int(list[0])
+#     value_2 = list[1]
+#     return value_1, value_2
 
-print([el for el in to_do_list if not el == 0])
+
+# while 'End' not in notes:
+#     importance, note = notes_separation(notes)
+#     to_do_list.pop(importance)
+#     to_do_list.insert(importance, note)
+#     notes = input().split("-")
+
+# print([el for el in to_do_list if not el == 0])
 
 
 '''
