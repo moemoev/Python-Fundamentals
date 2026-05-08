@@ -1,17 +1,25 @@
-mixed_numbers = [int(el) for el in input().split(", ")]
-even_numbers = [el for el in mixed_numbers if el % 2 == 0]
-odd_numbers = [el for el in mixed_numbers if not el % 2 == 0]
-pos_numbers = [el for el in mixed_numbers if 0 <= el]
-neg_numbers = [el for el in mixed_numbers if not 0 <= el]
-print(f"Positive: ", end="")
-print(*pos_numbers, sep=", ")
-print(f"Negative: ", end="")
-print(*neg_numbers, sep=", ")
-print(f"Even: ", end="")
-print(*even_numbers, sep=", ")
-print(f"Odd: ", end="")
-print(*odd_numbers, sep=", ")
+numbers = [int(el) for el in input().split(", ")]
 
+print(f"Positive: {', '.join(str(el) for el in numbers if el >= 0)}")
+print(f"Negative: {', '.join(str(el) for el in numbers if el < 0)}")
+print(f"Even: {', '.join(str(el) for el in numbers if el % 2 == 0)}")
+print(f"Odd: {', '.join(str(el) for el in numbers if el % 2 != 0)}")
+
+
+# mixed_numbers = [int(el) for el in input().split(", ")]
+# even_numbers = [el for el in mixed_numbers if el % 2 == 0]
+# odd_numbers = [el for el in mixed_numbers if not el % 2 == 0]
+# pos_numbers = [el for el in mixed_numbers if 0 <= el]
+# neg_numbers = [el for el in mixed_numbers if not 0 <= el]
+# print(f"Positive: ", end="")
+# print(*pos_numbers, sep=", ")
+# print(f"Negative: ", end="")
+# print(*neg_numbers, sep=", ")
+# print(f"Even: ", end="")
+# print(*even_numbers, sep=", ")
+# print(f"Odd: ", end="")
+# print(*odd_numbers, sep=", ")
+#
 
 '''
 TASK:

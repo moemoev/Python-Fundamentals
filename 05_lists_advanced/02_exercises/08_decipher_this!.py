@@ -1,28 +1,50 @@
-encoded_words = [[el for el in word] for word in input().split()]
+words = input().split(" ")
+deciphered = []
+
+def get_index(w: str)->int:
+    for i, el in enumerate(w):
+        if not el.isdigit():
+            return  i - 1
+
+    return -1
+
+for word in words:
+    i = get_index(word)
+    key = int(word[:i + 1])
+
+    word = list(chr(key) + word[i + 1:])
+    word[1], word[len(word) - 1] = word[len(word) - 1], word[1]
+    deciphered.append("".join(word))
 
 
-def separate_digits(string):
-    digit = ''
-    items_to_remove = 0
-    for el in string:
-        if 47 < ord(el) < 58:
-            digit += el
-            items_to_remove += 1
-        else:
-            break
-    return int(digit), items_to_remove
+print(" ".join(deciphered))
 
 
-for word in encoded_words:
-    separated_digits, remove = separate_digits("".join(word))
-    while remove:
-        word.pop(0)
-        remove -= 1
-    word[0], word[-1] = word[-1], word[0]
-    word.insert(0, chr(separated_digits))
-
-for word in encoded_words:
-    print("".join(word), end=" ")
+# encoded_words = [[el for el in word] for word in input().split()]
+#
+#
+# def separate_digits(string):
+#     digit = ''
+#     items_to_remove = 0
+#     for el in string:
+#         if 47 < ord(el) < 58:
+#             digit += el
+#             items_to_remove += 1
+#         else:
+#             break
+#     return int(digit), items_to_remove
+#
+#
+# for word in encoded_words:
+#     separated_digits, remove = separate_digits("".join(word))
+#     while remove:
+#         word.pop(0)
+#         remove -= 1
+#     word[0], word[-1] = word[-1], word[0]
+#     word.insert(0, chr(separated_digits))
+#
+# for word in encoded_words:
+#     print("".join(word), end=" ")
 
 
 '''

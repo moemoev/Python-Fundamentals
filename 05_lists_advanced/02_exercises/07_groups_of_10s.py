@@ -1,3 +1,14 @@
+numbers = [int(el) for el in input().split(", ")]
+group = 0
+
+while numbers:
+    group += 10
+
+    values = [el for el in numbers if el <= group]
+    numbers = [el for el in numbers if el > group]
+
+    print(f"Group of {group}'s: {values}")
+
 '''
 TASK:
 Write a program that receives a sequence of numbers (a string containing integers separated by ", ") and prints the

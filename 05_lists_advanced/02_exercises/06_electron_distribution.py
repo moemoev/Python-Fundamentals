@@ -1,16 +1,30 @@
-num_electrons = int(input())
-index_shell = 0
-electron_shells = [0]
+electrons = int(input())
+shells = []
 
-while num_electrons:
-    if electron_shells[index_shell] < 2 * (index_shell + 1) ** 2:
-        electron_shells[index_shell] += 1
-    else:
-        electron_shells.append(1)
-        index_shell += 1
-    num_electrons -= 1
-print(electron_shells)
+while electrons > 0:
 
+    pos = len(shells) + 1
+    capacity_shell = 2 * pos ** 2
+
+    shells.append(min(electrons, capacity_shell))
+    electrons -= min(electrons,capacity_shell)
+
+print(shells)
+
+
+# num_electrons = int(input())
+# index_shell = 0
+# electron_shells = [0]
+#
+# while num_electrons:
+#     if electron_shells[index_shell] < 2 * (index_shell + 1) ** 2:
+#         electron_shells[index_shell] += 1
+#     else:
+#         electron_shells.append(1)
+#         index_shell += 1
+#     num_electrons -= 1
+# print(electron_shells)
+#
 
 '''
 TASK:
