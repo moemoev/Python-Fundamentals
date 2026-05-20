@@ -1,5 +1,5 @@
 class Email:
-    def __init__(self, sender, receiver, content, is_sent=False):
+    def __init__(self, sender, receiver,content, is_sent=False):
         self.sender = sender
         self.receiver = receiver
         self.content = content
@@ -8,23 +8,55 @@ class Email:
     def send(self):
         self.is_sent = True
 
-    def get_info(self):
+    def get_info(self)->str:
         return f"{self.sender} says to {self.receiver}: {self.content}. Sent: {self.is_sent}"
 
+mails = []
+while True:
+    token = input()
 
-emails = []
-email = input().split()
-index = 0
-while 'Stop' not in email:
-    emails.append(Email(email[0], email[1], email[2]))
-    index += 1
-    email = input().split()
+    if token == 'Stop':
+        break
 
-sending_emails = [int(el) for el in input().split(", ")]
-for el in sending_emails:
-    emails[el].send()
-for el in emails:
-    print(el.get_info())
+    token = token.split(" ")
+
+    mails.append(Email(token[0], token[1],token[2]))
+
+indices = [int(el) for el in input().split(", ")]
+
+for i in indices:
+    mails[i].send()
+
+for m in mails:
+    print(f"{m.sender} says to {m.receiver}: {m.content}. Sent: {m.is_sent}")
+
+# class Email:
+#     def __init__(self, sender, receiver, content, is_sent=False):
+#         self.sender = sender
+#         self.receiver = receiver
+#         self.content = content
+#         self.is_sent = is_sent
+#
+#     def send(self):
+#         self.is_sent = True
+#
+#     def get_info(self):
+#         return f"{self.sender} says to {self.receiver}: {self.content}. Sent: {self.is_sent}"
+#
+#
+# emails = []
+# email = input().split()
+# index = 0
+# while 'Stop' not in email:
+#     emails.append(Email(email[0], email[1], email[2]))
+#     index += 1
+#     email = input().split()
+#
+# sending_emails = [int(el) for el in input().split(", ")]
+# for el in sending_emails:
+#     emails[el].send()
+# for el in emails:
+#     print(el.get_info())
 
 
 '''

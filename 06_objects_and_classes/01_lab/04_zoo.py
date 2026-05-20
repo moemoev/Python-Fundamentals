@@ -1,40 +1,80 @@
 class Zoo:
     __animals = 0
 
-    def __init__(self, name_zoo):
-        self.name_zoo = name_zoo
+    species_map = {
+        "mammal": "mammals",
+        "bird": "birds",
+        "fish": "fishes",
+    }
+
+    def __init__(self, name):
+        self.name = name
         self.mammals = []
         self.fishes = []
         self.birds = []
 
-    def add_animal(self, species, name):
-        if species == 'mammal':
-            self.mammals.append(name)
-        elif species == 'fish':
-            self.fishes.append(name)
-        elif species == 'bird':
-            self.birds.append(name)
+    def add_animal(self, species: str, name: str):
+        animals_list = (getattr(self, self.species_map[species]))
+        animals_list.append(name)
 
-        self.__animals += 1
+        Zoo.__animals += 1
+
 
     def get_info(self, species):
-        if species == 'mammal':
-            message = f"Mammals in {self.name_zoo}: {', '.join(self.mammals)}\nTotal animals: {self.__animals}"
-        elif species == 'bird':
-            message = f"Birds in {self.name_zoo}: {', '.join(self.birds)}\nTotal animals: {self.__animals}"
-        elif species == 'fish':
-            message = f"Fishes in {self.name_zoo}: {', '.join(self.fishes)}\nTotal animals: {self.__animals}"
-        else:
-            message = f"You fucked up, try again!"
-        return message
+        plural_species = self.species_map[species]
+        animals_list = getattr(self, self.species_map[species])
 
+        result = f"{plural_species.capitalize()} in {self.name}: {', '.join(animals_list)}\n"
+        result += f"Total animals: {Zoo.__animals}"
+
+        return result
 
 zoo = Zoo(input())
-animals = int(input())
-for _ in range(animals):
+count_animals = int(input())
+
+for _ in range(count_animals):
     species, name = input().split()
     zoo.add_animal(species, name)
+
 print(zoo.get_info(input()))
+
+# class Zoo:
+#     __animals = 0
+#
+#     def __init__(self, name_zoo):
+#         self.name_zoo = name_zoo
+#         self.mammals = []
+#         self.fishes = []
+#         self.birds = []
+#
+#     def add_animal(self, species, name):
+#         if species == 'mammal':
+#             self.mammals.append(name)
+#         elif species == 'fish':
+#             self.fishes.append(name)
+#         elif species == 'bird':
+#             self.birds.append(name)
+#
+#         self.__animals += 1
+#
+#     def get_info(self, species):
+#         if species == 'mammal':
+#             message = f"Mammals in {self.name_zoo}: {', '.join(self.mammals)}\nTotal animals: {self.__animals}"
+#         elif species == 'bird':
+#             message = f"Birds in {self.name_zoo}: {', '.join(self.birds)}\nTotal animals: {self.__animals}"
+#         elif species == 'fish':
+#             message = f"Fishes in {self.name_zoo}: {', '.join(self.fishes)}\nTotal animals: {self.__animals}"
+#         else:
+#             message = f"You fucked up, try again!"
+#         return message
+#
+#
+# zoo = Zoo(input())
+# animals = int(input())
+# for _ in range(animals):
+#     species, name = input().split()
+#     zoo.add_animal(species, name)
+# print(zoo.get_info(input()))
 
 
 '''

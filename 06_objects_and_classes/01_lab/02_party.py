@@ -2,19 +2,36 @@ class Party:
     def __init__(self):
         self.people = []
 
-    def print_pple(self, people):
-        print(f"Going:", ", ".join(el for el in people))
-        print(f"Total: {len(people)}")
+p = Party()
 
+while True:
+    token = input()
 
-guests = input()
-party = Party()
+    if token == 'End':
+        break
 
-while 'End' not in guests:
-    party.people.append(guests)
-    guests = input()
+    p.people.append(token)
 
-party.print_pple(party.people)
+print(f"Going: {', '.join(p.people)}")
+print(f"Total: {len(p.people)}")
+
+# class Party:
+#     def __init__(self):
+#         self.people = []
+#
+#     def print_pple(self, people):
+#         print(f"Going:", ", ".join(el for el in people))
+#         print(f"Total: {len(people)}")
+#
+#
+# guests = input()
+# party = Party()
+#
+# while 'End' not in guests:
+#     party.people.append(guests)
+#     guests = input()
+#
+# party.print_pple(party.people)
 
 
 '''
