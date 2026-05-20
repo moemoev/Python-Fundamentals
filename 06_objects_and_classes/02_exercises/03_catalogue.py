@@ -1,20 +1,42 @@
-#note judge does probrems!!!
-import os
 class Catalogue:
+
     def __init__(self, name):
         self.name = name
-        self.product = []
+        self.products = []
 
-    def add_product(self, product_name):
-        self.product.append(product_name)
+    def add_product(self, product_name: str):
+        self.products.append(product_name)
 
-    def get_by_letter(self, first_letter):
-        result = [el for el in self.product if first_letter in el]
-        return result
+
+    def get_by_letter(self, first_letter: str):
+        return [el for el in self.products if el[0] == first_letter]
 
     def __repr__(self):
-        self.product.sort()
-        return f"Items in the {self.name} catalogue: \n{os.linesep.join(self.product)}"
+        result = f"Items in the {self.name} catalogue:"
+
+        for product in sorted(self.products):
+            result += f"\n{product}"
+
+        return result
+
+
+# #note judge does probrems!!!
+# import os
+# class Catalogue:
+#     def __init__(self, name):
+#         self.name = name
+#         self.product = []
+#
+#     def add_product(self, product_name):
+#         self.product.append(product_name)
+#
+#     def get_by_letter(self, first_letter):
+#         result = [el for el in self.product if first_letter in el]
+#         return result
+#
+#     def __repr__(self):
+#         self.product.sort()
+#         return f"Items in the {self.name} catalogue: \n{os.linesep.join(self.product)}"
 
 
 # catalogue = Catalogue("Furniture")

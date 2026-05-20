@@ -1,23 +1,49 @@
 class Class:
-    __student__count = 0
+    __students_count = 22
 
-    def __init__(self, name):
+    def __init__(self, name: str):
         self.name = name
         self.students = []
         self.grades = []
 
     def add_student(self, name: str, grade: float):
-        if self.__student__count < 22:
+        free_spots = Class.__students_count - len(self.students)
+
+        if free_spots:
+
             self.students.append(name)
             self.grades.append(grade)
-            self.__student__count += 1
+
 
     def get_average_grade(self):
-        result = sum([float(el) for el in self.grades]) / self.__student__count
-        return result
+
+        avg_grade = sum(self.grades) / len(self.grades)
+
+        return round(avg_grade, 2)
 
     def __repr__(self):
-        return f"The students in {self.name}: {', '.join(self.students)}. Average grade: {self.get_average_grade():.2f}"
+        stream = f"The students in {self.name}: {', '.join(self.students)}. Average grade: {self.get_average_grade()}"
+
+# class Class:
+#     __student__count = 0
+#
+#     def __init__(self, name):
+#         self.name = name
+#         self.students = []
+#         self.grades = []
+#
+#     def add_student(self, name: str, grade: float):
+#         if self.__student__count < 22:
+#             self.students.append(name)
+#             self.grades.append(grade)
+#             self.__student__count += 1
+#
+#     def get_average_grade(self):
+#         result = sum([float(el) for el in self.grades]) / self.__student__count
+#         return result
+#
+#     def __repr__(self):
+#         return f"The students in {self.name}: {', '.join(self.students)}. Average grade: {self.get_average_grade():.2f}"
 
 
 # a_class = Class("11B")
