@@ -1,21 +1,38 @@
-cmd = input()
 phonebook = {}
 
-while "-" in cmd:
-    cmd = [el for el in cmd.split("-")]
-    name, number = cmd[0], cmd[1]
-    if name not in phonebook:
-        phonebook[name] = None
-    phonebook[name] = number
-    cmd = input()
+token = input()
 
-number = int(cmd)
-for _ in range(number):
+while not token.isdigit():
+
+    name, number = token.split("-")
+
+    phonebook[name] = number
+
+    token = input()
+
+for _ in range(int(token)):
     name = input()
-    if name not in phonebook:
-        print(f"Contact {name} does not exist.")
-        continue
-    print(f"{name} -> {phonebook[name]}")
+
+    print(f"{name} -> {phonebook[name]}") if name in phonebook else print(f"Contact {name} does not exist.")
+
+# cmd = input()
+# phonebook = {}
+#
+# while "-" in cmd:
+#     cmd = [el for el in cmd.split("-")]
+#     name, number = cmd[0], cmd[1]
+#     if name not in phonebook:
+#         phonebook[name] = None
+#     phonebook[name] = number
+#     cmd = input()
+#
+# number = int(cmd)
+# for _ in range(number):
+#     name = input()
+#     if name not in phonebook:
+#         print(f"Contact {name} does not exist.")
+#         continue
+#     print(f"{name} -> {phonebook[name]}")
 
 
 '''

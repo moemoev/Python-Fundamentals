@@ -1,44 +1,85 @@
-points_by_language_by_user = {}
+results = {}
+submissions = {}
 banned_users = []
-submissions_by_languages = {}
 
+token = input()
 
-def ban_user(cmd_in: str):
-    banned_user, banned = [el for el in cmd_in.split("-")]
-    banned_users.append(banned_user)
+while not token == 'exam finished':
 
-
-cmd = input()
-while not cmd == 'exam finished':
-    if 'banned' in cmd:
-        ban_user(cmd)
-        cmd = input()
+    if 'banned' in token:
+        banned_users.append(token.split("-")[0])
+        token = input()
         continue
-    user, language, points = [el for el in cmd.split("-")]
-    point = int(points)
-    if user in banned_users:
-        cmd = input()
-        continue
-    if user not in points_by_language_by_user:
-        points_by_language_by_user[user] = {}
-        points_by_language_by_user[user][language] = points
-    elif language not in points_by_language_by_user[user].keys():
-        points_by_language_by_user[user][language] = points
-    elif points_by_language_by_user[user][language] < points:
-        points_by_language_by_user[user][language] = points
-    if language not in submissions_by_languages:
-        submissions_by_languages[language] = 0
-    submissions_by_languages[language] += 1
-    cmd = input()
 
-print(f"Results:")
-for name in points_by_language_by_user:
-    for kvp in points_by_language_by_user[name].items():
-        if name not in banned_users:
-            print(f"{name} | {kvp[1]}")
+    token = token.split("-")
+    username, language, points = token[0], token[1], int(token[2])
+
+    if username not in results:
+        results[username] = {}
+
+    if language not in results[username]:
+        results[username][language] = points
+
+    if language not in submissions:
+        submissions[language] = 0
+
+    results[username][language] = max(results[username][language], points)
+    submissions[language] += 1
+
+    token = input()
+
+print("Results:")
+for user, subs in results.items():
+    if user not in banned_users:
+        for points in subs.values():
+            print(f"{user} | {points}")
+
 print(f"Submissions:")
-for language, count in submissions_by_languages.items():
+for language, count in submissions.items():
     print(f"{language} - {count}")
+
+
+# points_by_language_by_user = {}
+# banned_users = []
+# submissions_by_languages = {}
+#
+#
+# def ban_user(cmd_in: str):
+#     banned_user, banned = [el for el in cmd_in.split("-")]
+#     banned_users.append(banned_user)
+#
+#
+# cmd = input()
+# while not cmd == 'exam finished':
+#     if 'banned' in cmd:
+#         ban_user(cmd)
+#         cmd = input()
+#         continue
+#     user, language, points = [el for el in cmd.split("-")]
+#     point = int(points)
+#     if user in banned_users:
+#         cmd = input()
+#         continue
+#     if user not in points_by_language_by_user:
+#         points_by_language_by_user[user] = {}
+#         points_by_language_by_user[user][language] = points
+#     elif language not in points_by_language_by_user[user].keys():
+#         points_by_language_by_user[user][language] = points
+#     elif points_by_language_by_user[user][language] < points:
+#         points_by_language_by_user[user][language] = points
+#     if language not in submissions_by_languages:
+#         submissions_by_languages[language] = 0
+#     submissions_by_languages[language] += 1
+#     cmd = input()
+#
+# print(f"Results:")
+# for name in points_by_language_by_user:
+#     for kvp in points_by_language_by_user[name].items():
+#         if name not in banned_users:
+#             print(f"{name} | {kvp[1]}")
+# print(f"Submissions:")
+# for language, count in submissions_by_languages.items():
+#     print(f"{language} - {count}")
 
 
 '''

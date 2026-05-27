@@ -1,59 +1,123 @@
-cmd = input()
-users_by_force = {}
+force_book = {}
 
+def get_all_force_users(d: dict) -> list:
+    users = [user for force, users in d.items() for user in users]
+    return users
 
-def user_and_side_exist(forcebook: dict, user: str, force: str):
-    if force not in forcebook and user not in forcebook.values():
-        return False
-    return True
+def get_side_by_user(d: dict, f_u: str) -> str:
+    for side, users in d.items():
+        if f_u in users:
+            return side
 
+def add_user(d: dict, f_u: str, f_s : str) -> dict:
 
-def user_already_exists(forcebook: dict, user: str):
-    for key in forcebook:
-        if user in forcebook[key]:
-            return True
-    return False
+    if f_u not in get_all_force_users(d):
+        if f_s in d:
+            d[f_s].append(f_u)
+        else:
+            d[f_s] = [f_u]
 
+    return d
 
-def change_users_side(forcebook: dict, user: str, force: str):
-    if force not in forcebook:
-        forcebook[force] = []
-    for key in forcebook:
-        if user in forcebook[key]:
-            forcebook[key].remove(user)
-    forcebook[force].append(user)
-    print_user_joining_side(user, force)
-    return forcebook
+def transfer_user(d: dict, f_u: str, f_s : str) -> dict:
 
+    if f_u not in get_all_force_users(d):
+        if f_s not in d:
+            d[f_s] = []
 
-def print_user_joining_side(user: str, force: str):
-    print(f"{user} joins the {force} side!")
+        d[f_s].append(f_u)
 
-
-while not cmd == 'Lumpawaroo':
-    if '|' in cmd:
-        force_side, force_user = [el for el in cmd.split(" | ")]
-        switch = False
     else:
-        force_user, force_side = [el for el in cmd.split(" -> ")]
-        switch = True
-    if user_already_exists(users_by_force, force_user):
-        if switch:
-            users_by_force = change_users_side(users_by_force, force_user, force_side)
-        cmd = input()
-        continue
-    if not user_and_side_exist(users_by_force, force_user, force_side):
-        users_by_force[force_side] = []
-    users_by_force[force_side].append(force_user)
-    if switch:
-        print_user_joining_side(force_user, force_side)
-    cmd = input()
+        previous_side = get_side_by_user(d, f_u)
 
-for key in users_by_force:
-    if users_by_force[key]:
-        print(f"Side: {key}, Members: {len(users_by_force[key])}")
-    for user in users_by_force[key]:
-        print(f"! {user}")
+        d[previous_side].remove(f_u)
+
+        d = add_user(d, f_u, f_s)
+
+    print(f"{force_user} joins the {force_side} side!")
+
+    return d
+
+
+token = input()
+
+while not token == 'Lumpawaroo':
+
+    if '|' in token:
+        force_side,force_user = token.split(" | ")
+        force_book = add_user(force_book, force_user, force_side)
+
+    elif '->' in token:
+        force_user, force_side = token.split(" -> ")
+        force_book = transfer_user(force_book, force_user, force_side)
+
+    token = input()
+
+for side, users in force_book.items():
+    if len(users) > 0:
+        print(f"Side: {side}, Members: {len(users)}")
+
+        for user in users:
+            print(f"! {user}")
+
+
+
+# cmd = input()
+# users_by_force = {}
+#
+#
+# def user_and_side_exist(forcebook: dict, user: str, force: str):
+#     if force not in forcebook and user not in forcebook.values():
+#         return False
+#     return True
+#
+#
+# def user_already_exists(forcebook: dict, user: str):
+#     for key in forcebook:
+#         if user in forcebook[key]:
+#             return True
+#     return False
+#
+#
+# def change_users_side(forcebook: dict, user: str, force: str):
+#     if force not in forcebook:
+#         forcebook[force] = []
+#     for key in forcebook:
+#         if user in forcebook[key]:
+#             forcebook[key].remove(user)
+#     forcebook[force].append(user)
+#     print_user_joining_side(user, force)
+#     return forcebook
+#
+#
+# def print_user_joining_side(user: str, force: str):
+#     print(f"{user} joins the {force} side!")
+#
+#
+# while not cmd == 'Lumpawaroo':
+#     if '|' in cmd:
+#         force_side, force_user = [el for el in cmd.split(" | ")]
+#         switch = False
+#     else:
+#         force_user, force_side = [el for el in cmd.split(" -> ")]
+#         switch = True
+#     if user_already_exists(users_by_force, force_user):
+#         if switch:
+#             users_by_force = change_users_side(users_by_force, force_user, force_side)
+#         cmd = input()
+#         continue
+#     if not user_and_side_exist(users_by_force, force_user, force_side):
+#         users_by_force[force_side] = []
+#     users_by_force[force_side].append(force_user)
+#     if switch:
+#         print_user_joining_side(force_user, force_side)
+#     cmd = input()
+#
+# for key in users_by_force:
+#     if users_by_force[key]:
+#         print(f"Side: {key}, Members: {len(users_by_force[key])}")
+#     for user in users_by_force[key]:
+#         print(f"! {user}")
 
 
 '''

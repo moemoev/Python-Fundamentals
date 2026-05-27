@@ -1,17 +1,38 @@
-cmd = input()
-students_by_course = {}
+courses = {}
 
-while not cmd == 'end':
-    course, name = [el for el in cmd.split(" : ")]
-    if course not in students_by_course:
-        students_by_course[course] = []
-    students_by_course[course].append(name)
-    cmd = input()
+token = input()
 
-for key in students_by_course:
-    print(f"{key}: {len(students_by_course[key])}")
-    for student in students_by_course[key]:
+while not token == 'end':
+    course_name, student_name = token.split(" : ")
+
+    if course_name not in courses:
+        courses[course_name] = []
+
+    courses[course_name].append(student_name)
+
+    token = input()
+
+for k, v in courses.items():
+    print(f"{k}: {len(v)}")
+
+    for student in v:
         print(f"-- {student}")
+
+
+# cmd = input()
+# students_by_course = {}
+#
+# while not cmd == 'end':
+#     course, name = [el for el in cmd.split(" : ")]
+#     if course not in students_by_course:
+#         students_by_course[course] = []
+#     students_by_course[course].append(name)
+#     cmd = input()
+#
+# for key in students_by_course:
+#     print(f"{key}: {len(students_by_course[key])}")
+#     for student in students_by_course[key]:
+#         print(f"-- {student}")
 
 
 '''

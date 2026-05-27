@@ -1,16 +1,33 @@
-cmd = input()
-amount_by_resources = {}
+token = input()
+mined = {}
 
-while not cmd == 'stop':
-    key = cmd
-    value = int(input())
-    if key not in amount_by_resources:
-        amount_by_resources[key] = 0
-    amount_by_resources[key] += value
-    cmd = input()
+while not token == "stop":
+    resource = token
+    quantity = int(input())
 
-for key, value in amount_by_resources.items():
-    print(f"{key} -> {value}")
+    if resource not in mined:
+        mined[resource] = 0
+
+    mined[resource] += quantity
+
+    token = input()
+
+for k, v in mined.items():
+    print(f"{k} -> {v}")
+
+# cmd = input()
+# amount_by_resources = {}
+#
+# while not cmd == 'stop':
+#     key = cmd
+#     value = int(input())
+#     if key not in amount_by_resources:
+#         amount_by_resources[key] = 0
+#     amount_by_resources[key] += value
+#     cmd = input()
+#
+# for key, value in amount_by_resources.items():
+#     print(f"{key} -> {value}")
 
 
 '''

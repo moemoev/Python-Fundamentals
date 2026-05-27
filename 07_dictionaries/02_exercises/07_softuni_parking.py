@@ -1,43 +1,72 @@
-number_commands = int(input())
-car_by_user = {}
+parking = {}
+n = int(input())
 
+for i in range(n):
+    token = input().split(" ")
+    cmd, username = token[0:2]
 
-def user_already_registered(registration: dict, name: str):
-    if name in registration:
-        print(f"ERROR: already registered with plate number {registration[name]}")
-        return True
-    return False
+    if cmd == 'register':
+        license_plate_number = token[2]
 
-
-def user_not_present(registration: dict, name: str):
-    if name not in registration:
-        print(f"ERROR: user {name} not found")
-        return True
-    return False
-
-
-def unregister_user(registration: dict, name: str):
-    registration.pop(name)
-    return registration
-
-
-for _ in range(number_commands):
-    cmd = input().split()
-    task, username = cmd[0], cmd[1]
-    if task == 'register':
-        licence_plate = cmd[2]
-        if user_already_registered(car_by_user, username):
+        if username in parking:
+            print(f"ERROR: already registered with plate number {license_plate_number}")
             continue
-        car_by_user[username] = licence_plate
-        print(f"{username} registered {car_by_user[username]} successfully")
-    elif task == 'unregister':
-        if user_not_present(car_by_user, username):
+
+        parking[username] = license_plate_number
+        print(f"{username} registered {license_plate_number} successfully")
+
+    else:
+        if not username in parking:
+            print(f"ERROR: user {username} not found")
             continue
-        car_by_user = unregister_user(car_by_user, username)
+
+        del(parking[username])
         print(f"{username} unregistered successfully")
 
-for username, licence_plate in car_by_user.items():
-    print(f"{username} => {licence_plate}")
+for k, v in parking.items():
+    print(f"{k} => {v}")
+
+
+# number_commands = int(input())
+# car_by_user = {}
+#
+#
+# def user_already_registered(registration: dict, name: str):
+#     if name in registration:
+#         print(f"ERROR: already registered with plate number {registration[name]}")
+#         return True
+#     return False
+#
+#
+# def user_not_present(registration: dict, name: str):
+#     if name not in registration:
+#         print(f"ERROR: user {name} not found")
+#         return True
+#     return False
+#
+#
+# def unregister_user(registration: dict, name: str):
+#     registration.pop(name)
+#     return registration
+#
+#
+# for _ in range(number_commands):
+#     cmd = input().split()
+#     task, username = cmd[0], cmd[1]
+#     if task == 'register':
+#         licence_plate = cmd[2]
+#         if user_already_registered(car_by_user, username):
+#             continue
+#         car_by_user[username] = licence_plate
+#         print(f"{username} registered {car_by_user[username]} successfully")
+#     elif task == 'unregister':
+#         if user_not_present(car_by_user, username):
+#             continue
+#         car_by_user = unregister_user(car_by_user, username)
+#         print(f"{username} unregistered successfully")
+#
+# for username, licence_plate in car_by_user.items():
+#     print(f"{username} => {licence_plate}")
 
 
 '''

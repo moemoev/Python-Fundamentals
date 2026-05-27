@@ -1,18 +1,38 @@
-cmd = input()
-employees_by_company = {}
+companies = {}
 
-while not cmd == 'End':
-    company, employee = [el for el in cmd.split(" -> ")]
-    if company not in employees_by_company:
-        employees_by_company[company] = []
-    if employee not in employees_by_company[company]:
-        employees_by_company[company].append(employee)
-    cmd = input()
+token = input()
 
-for company in employees_by_company:
-    print(f"{company}")
-    for employee in employees_by_company[company]:
+while not token == 'End':
+    company, employee = token.split(" -> ")
+
+    if company not in companies:
+        companies[company] = [employee]
+
+    elif not employee in companies[company]:
+        companies[company].append(employee)
+
+    token = input()
+
+for k, v in companies.items():
+    print(f"{k}")
+    for employee in v:
         print(f"-- {employee}")
+
+# cmd = input()
+# employees_by_company = {}
+#
+# while not cmd == 'End':
+#     company, employee = [el for el in cmd.split(" -> ")]
+#     if company not in employees_by_company:
+#         employees_by_company[company] = []
+#     if employee not in employees_by_company[company]:
+#         employees_by_company[company].append(employee)
+#     cmd = input()
+#
+# for company in employees_by_company:
+#     print(f"{company}")
+#     for employee in employees_by_company[company]:
+#         print(f"-- {employee}")
 
 
 '''

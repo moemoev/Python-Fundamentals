@@ -1,10 +1,18 @@
-countries_dict = input().split(", ")
-capitals_dict = input().split(", ")
+countries = input().split(", ")
+capitals = input().split(", ")
 
-capitals_by_countries = {key: value for key, value in zip(countries_dict, capitals_dict)}
+capital_by_country = dict(zip(countries, capitals))
 
-for country, capital in capitals_by_countries.items():
-    print(f"{country} -> {capital}")
+for k, v in capital_by_country.items():
+    print(f"{k} -> {v}")
+
+# countries_dict = input().split(", ")
+# capitals_dict = input().split(", ")
+#
+# capitals_by_countries = {key: value for key, value in zip(countries_dict, capitals_dict)}
+#
+# for country, capital in capitals_by_countries.items():
+#     print(f"{country} -> {capital}")
 
 
 '''

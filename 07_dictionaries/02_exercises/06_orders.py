@@ -1,18 +1,41 @@
-cmd = input()
-price_and_amount_by_items = {}
+products = {}
 
-while not cmd == 'buy':
-    cmd = cmd.split()
-    name, price, amount = cmd[0], float(cmd[1]), float(cmd[2])
-    if name not in price_and_amount_by_items:
-        price_and_amount_by_items[name] = [price, 0]
-    if not price == price_and_amount_by_items[name][0]:
-        price_and_amount_by_items[name][0] = price
-    price_and_amount_by_items[name][1] += amount
-    cmd = input()
+token = input()
 
-for key, value in price_and_amount_by_items.items():
-    print(f"{key} -> {(value[0] * value[1]):.2f}")
+while not token == 'buy':
+    token = token.split(" ")
+    product, price, quantity  = token[0], float(token[1]), int(token[2])
+
+    if not product in products:
+        products[product] = {
+            'price' : 0,
+            'quantity': 0
+        }
+
+    products[product]['price'] = price
+    products[product]['quantity'] += quantity
+
+    token = input()
+
+for k, v in products.items():
+    print(f"{k} -> {v['price'] * v['quantity']:.2f}")
+
+
+# cmd = input()
+# price_and_amount_by_items = {}
+#
+# while not cmd == 'buy':
+#     cmd = cmd.split()
+#     name, price, amount = cmd[0], float(cmd[1]), float(cmd[2])
+#     if name not in price_and_amount_by_items:
+#         price_and_amount_by_items[name] = [price, 0]
+#     if not price == price_and_amount_by_items[name][0]:
+#         price_and_amount_by_items[name][0] = price
+#     price_and_amount_by_items[name][1] += amount
+#     cmd = input()
+#
+# for key, value in price_and_amount_by_items.items():
+#     print(f"{key} -> {(value[0] * value[1]):.2f}")
 
 
 
