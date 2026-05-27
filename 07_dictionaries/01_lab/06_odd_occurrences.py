@@ -1,15 +1,29 @@
-words = input().lower().split(" ")
-count_of_words = {}
+occurrences = {}
 
-for el in words:
-    if el not in count_of_words:
-        count_of_words.update({el: 1})
-        continue
-    count_of_words[el] += 1
+for string in input().split(" "):
+    string = string.lower()
 
-for key in count_of_words:
-    if not count_of_words[key] % 2 == 0:
+    if string not in occurrences:
+        occurrences[string] = 0
+
+    occurrences[string] += 1
+
+for key, value in occurrences.items():
+    if not value % 2 == 0:
         print(key, end=" ")
+
+# words = input().lower().split(" ")
+# count_of_words = {}
+#
+# for el in words:
+#     if el not in count_of_words:
+#         count_of_words.update({el: 1})
+#         continue
+#     count_of_words[el] += 1
+#
+# for key in count_of_words:
+#     if not count_of_words[key] % 2 == 0:
+#         print(key, end=" ")
 
 
 '''

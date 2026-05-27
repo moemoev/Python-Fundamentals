@@ -1,6 +1,10 @@
-characters = [el for el in input().split(", ")]
-order_by_character = {el: ord(el) for el in characters}
-print(order_by_character)
+asc_vals = {el : ord(el) for el in  input().split(", ")}
+
+print(asc_vals)
+
+# characters = [el for el in input().split(", ")]
+# order_by_character = {el: ord(el) for el in characters}
+# print(order_by_character)
 
 
 '''

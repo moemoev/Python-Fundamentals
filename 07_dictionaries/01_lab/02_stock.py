@@ -1,17 +1,25 @@
-stock = input().split()
-products = stock[::2]
-quantity = [int(el) for el in stock[1::2]]
-my_stock = {}
-prod_to_check = input().split()
+tokens = input().split(" ")
+stock = {tokens[i]: (int(tokens[i + 1])) for i in range(0, len(tokens), 2)}
 
-for i in range(len(products)):
-    my_stock[products[i]] = quantity[i]
+requests = input().split(" ")
 
-for el in prod_to_check:
-    if el in my_stock:
-        print(f"We have {my_stock[el]} of {el} left")
-    else:
-        print(f"Sorry, we don't have {el}")
+for request in requests:
+    print(f"We have {stock[request]} of {request} left") if request in stock else print (f"Sorry, we don't have {request}")
+
+# stock = input().split()
+# products = stock[::2]
+# quantity = [int(el) for el in stock[1::2]]
+# my_stock = {}
+# prod_to_check = input().split()
+#
+# for i in range(len(products)):
+#     my_stock[products[i]] = quantity[i]
+#
+# for el in prod_to_check:
+#     if el in my_stock:
+#         print(f"We have {my_stock[el]} of {el} left")
+#     else:
+#         print(f"Sorry, we don't have {el}")
 
 
 '''

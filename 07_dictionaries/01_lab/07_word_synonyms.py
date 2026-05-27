@@ -1,15 +1,30 @@
-number = int(input())
-synonyms_of_words = {}
+n = int(input())
 
-for _ in range(number):
-    word = input()
-    synonym = input()
-    if word not in synonyms_of_words:
-        synonyms_of_words.update({word: []})
-    synonyms_of_words[word].append(synonym)
+words = {}
 
-for key, value in synonyms_of_words.items():
+for _ in range(n):
+    word, synonym = input(), input()
+
+    if not word in words:
+        words[word] = []
+
+    words[word].append(synonym)
+
+for key, value in words.items():
     print(f"{key} - {', '.join(value)}")
+
+# number = int(input())
+# synonyms_of_words = {}
+#
+# for _ in range(number):
+#     word = input()
+#     synonym = input()
+#     if word not in synonyms_of_words:
+#         synonyms_of_words.update({word: []})
+#     synonyms_of_words[word].append(synonym)
+#
+# for key, value in synonyms_of_words.items():
+#     print(f"{key} - {', '.join(value)}")
 
 
 '''

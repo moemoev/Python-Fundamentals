@@ -1,12 +1,18 @@
-inventory = input().split()
-products = inventory[::2]
-quantity = [int(el) for el in inventory[1::2]]
+s = input().split(" ")
 
-inv_dict = {}
-for i in range(len(products)):
-    inv_dict[products[i]] = quantity[i]
+food = s[::2]
+quantities = s[1::2]
+print(dict(zip(food, [int(el) for el in quantities])))
 
-print(inv_dict)
+# inventory = input().split()
+# products = inventory[::2]
+# quantity = [int(el) for el in inventory[1::2]]
+#
+# inv_dict = {}
+# for i in range(len(products)):
+#     inv_dict[products[i]] = quantity[i]
+#
+# print(inv_dict)
 
 
 '''

@@ -1,3 +1,25 @@
+cmd = input()
+inventory = {}
+
+while not cmd == 'statistics':
+    token = cmd.split(": ")
+    stock, quantity = token[0],int(token[1])
+
+    if stock not in inventory:
+        inventory[stock] = 0
+
+    inventory[stock] += quantity
+
+    cmd = input()
+
+print(f"Products in stock:")
+
+for key, value in inventory.items():
+    print(f"- {key}: {value}")
+
+print(f"Total Products: {len(list(inventory.keys()))}")
+print(f"Total Quantity: {sum(list(inventory.values()))}")
+
 '''
 TASK:
 You seem to be doing great at your first job. You have now successfully completed the first 2 of your tasks and your
