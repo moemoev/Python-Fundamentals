@@ -1,31 +1,47 @@
-passwords_to_test = [el for el in input().split(", ")]
-viable_passwords = []
+usernames = input().split(", ")
+valid_symbols = "_-"
+valid_usernames = []
 
+for username in usernames:
 
-def cointains_valid_symbols(word: str):
-    for letter in word:
-        if letter.isalpha():
-            continue
-        elif letter.isdigit():
-            continue
-        elif letter == '_':
-            continue
-        elif letter == '-':
-            continue
-        else:
-            return False
-    return True
-
-
-for password in passwords_to_test:
-    if not (3 <= len(password) <= 16):
+    if not  2 < len(username) < 17:
         continue
-    if not cointains_valid_symbols(password):
-        continue
-    viable_passwords.append(password)
 
-for password in viable_passwords:
-    print(f"{password}")
+    if all(ch.isalnum() or ch in valid_symbols for ch in username):
+        valid_usernames.append(username)
+
+
+for username in valid_usernames:
+    print(f"{username}")
+
+# passwords_to_test = [el for el in input().split(", ")]
+# viable_passwords = []
+
+
+# def cointains_valid_symbols(word: str):
+#     for letter in word:
+#         if letter.isalpha():
+#             continue
+#         elif letter.isdigit():
+#             continue
+#         elif letter == '_':
+#             continue
+#         elif letter == '-':
+#             continue
+#         else:
+#             return False
+#     return True
+
+
+# for password in passwords_to_test:
+#     if not (3 <= len(password) <= 16):
+#         continue
+#     if not cointains_valid_symbols(password):
+#         continue
+#     viable_passwords.append(password)
+
+# for password in viable_passwords:
+#     print(f"{password}")
 
 
 '''

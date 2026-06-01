@@ -1,13 +1,25 @@
-strings = input().split(" ")
-sum_ord = 0
+first,second = input().split(" ")
+common_len = min(len(first), len(second))
+val = 0
 
-for i in range(min(len(strings[0]), len(strings[1]))):
-    sum_ord += ord(strings[0][i]) * ord(strings[1][i])
-if not len(strings[0]) == len(strings[1]):
-    longer_str = max(strings, key=len)
-    for el in longer_str[min(len(strings[0]), len(strings[1]))::]:
-        sum_ord += ord(el)
-print(sum_ord)
+for i in range(common_len):
+    val += ord(first[i]) * ord(second[i])
+
+for ch in (first[common_len:] + second[common_len:]):
+    val += ord(ch)
+
+print(val)
+
+# strings = input().split(" ")
+# sum_ord = 0
+
+# for i in range(min(len(strings[0]), len(strings[1]))):
+#     sum_ord += ord(strings[0][i]) * ord(strings[1][i])
+# if not len(strings[0]) == len(strings[1]):
+#     longer_str = max(strings, key=len)
+#     for el in longer_str[min(len(strings[0]), len(strings[1]))::]:
+#         sum_ord += ord(el)
+# print(sum_ord)
 
 
 '''

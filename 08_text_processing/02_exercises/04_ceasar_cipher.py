@@ -1,10 +1,21 @@
-uncrypted_string = input()
-crypted_string = ''
+message = input()
+ceaser_cipher = 3
 
-for letter in uncrypted_string:
-    crypted_string += chr(ord(letter) + 3)
+encrypt_message = "".join(chr(ord(ch) + ceaser_cipher) for ch in message)
 
-print(crypted_string)
+
+print(encrypt_message)
+
+
+#note: the for loop will create a new version of the string every iteration of the loop due to immutability
+
+# uncrypted_string = input()
+# crypted_string = ''
+
+# for letter in uncrypted_string:
+#     crypted_string += chr(ord(letter) + 3)
+
+# print(crypted_string)
 
 
 '''
