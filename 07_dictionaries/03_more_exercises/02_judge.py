@@ -1,34 +1,71 @@
-cmd = input()
-points_by_user_by_contest = {}
-total_points_by_user = {}
+contests = {}
+total_scores = {}
 
-while not cmd == 'no more time':
-    user, contest, points = [el for el in cmd.split(" -> ")]
-    if user not in total_points_by_user:
-        total_points_by_user[user] = 0
+
+token = input()
+
+while not token == 'no more time':
+
+    user, contest, points = token.split(" -> ")
     points = int(points)
-    if contest not in points_by_user_by_contest:
-        points_by_user_by_contest[contest] = {}
-        points_by_user_by_contest[contest].update({user: points})
-    if user not in points_by_user_by_contest[contest]:
-        points_by_user_by_contest[contest].update({user: points})
 
-    elif points_by_user_by_contest[contest][user] < points:
-        points_by_user_by_contest[contest][user] = points
-    cmd = input()
+    if contest not in contests:
+        contests[contest] = {}
 
-for contest in points_by_user_by_contest:
-    print(f"{contest}: {len(points_by_user_by_contest[contest])} participants")
-    rank = 1
-    for user, points in sorted(points_by_user_by_contest[contest].items(), key=lambda kvp: (-kvp[1], kvp[0])):
-        print(f"{rank}. {user} <::> {points}")
-        total_points_by_user[user] += points
-        rank += 1
+    if user not in total_scores:
+        total_scores[user] = 0
+
+    if user not in contests[contest]:
+        contests[contest][user] = points
+        total_scores[user] += points
+
+    elif contests[contest][user] < points:
+        total_scores[user] += points - contests[contest][user]
+        contests[contest][user] = points
+
+    token = input()
+
+for contest, participants in contests.items():
+    print(f"{contest}: {len(participants)} participants")
+
+    for idx, (user, points) in enumerate(sorted(participants.items(), key=lambda x: (-x[1], x[0])), start=1):
+        print(f"{idx}. {user} <::> {points}")
+
 print(f"Individual standings:")
-rank = 1
-for user, points in sorted(total_points_by_user.items(), key=lambda kvp: (-kvp[1], kvp[0])):
-    print(f"{rank}. {user} -> {points}")
-    rank += 1
+for idx, (user, points) in enumerate(sorted(total_scores.items(), key=lambda x: (-x[1], x[0])), start=1):
+    print(f"{idx}. {user} -> {points}")
+
+# cmd = input()
+# points_by_user_by_contest = {}
+# total_points_by_user = {}
+
+# while not cmd == 'no more time':
+#     user, contest, points = [el for el in cmd.split(" -> ")]
+#     if user not in total_points_by_user:
+#         total_points_by_user[user] = 0
+#     points = int(points)
+#     if contest not in points_by_user_by_contest:
+#         points_by_user_by_contest[contest] = {}
+#         points_by_user_by_contest[contest].update({user: points})
+#     if user not in points_by_user_by_contest[contest]:
+#         points_by_user_by_contest[contest].update({user: points})
+
+#     elif points_by_user_by_contest[contest][user] < points:
+#         points_by_user_by_contest[contest][user] = points
+#     cmd = input()
+
+# for contest in points_by_user_by_contest:
+#     print(f"{contest}: {len(points_by_user_by_contest[contest])} participants")
+#     rank = 1
+#     for user, points in sorted(points_by_user_by_contest[contest].items(), key=lambda kvp: (-kvp[1], kvp[0])):
+#         print(f"{rank}. {user} <::> {points}")
+#         total_points_by_user[user] += points
+#         rank += 1
+# print(f"Individual standings:")
+# rank = 1
+# for user, points in sorted(total_points_by_user.items(), key=lambda kvp: (-kvp[1], kvp[0])):
+#     print(f"{rank}. {user} -> {points}")
+#     rank += 1
 
 
 '''
